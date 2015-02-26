@@ -14,6 +14,9 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
+# include <mlx.h>
+# include <math.h>
+# include <stdio.h>//
 
 typedef enum		e_fractype
 {
@@ -34,19 +37,34 @@ typedef	struct		s_screen
 
 typedef struct		s_info
 {
-	int				iterations;
-	double			central_point[2];.
+	int				max_iterations;
+	double			central_point[2];
 	double			current_limits_x[2];
 	double			current_limits_y[2];
-	int				zoom;
+	double			zoom;
 	double			current_point[2];
 	double			x_gradient;
 	double			y_gradient;
+	double			colour_gradient;
 }					t_info;
 
 typedef struct		s_parameters
 {
-	t_fractype		*fractype;
+	t_fractype		fractype;
 	t_info			*info;
 	t_screen		*screen;
 }					t_parameters;
+
+void				set_screen(t_screen *screen);
+void				set_info(t_info *info, t_screen *screen);
+int					custom_atoi(const char *str);
+int					mouse_hook(int button, int x, int y,
+					t_parameters *parameters);
+int 				key_hook(int keycode, t_parameters *parameters);
+int					expose_hook(t_parameters *parameters);
+double				get_current_x0(t_parameters *parameters, int col);
+double				get_current_y0(t_parameters *parameters, int line);
+void				handle_fractol(t_parameters *parameters);
+void				set_new_info(t_info *info, t_screen *screen);
+
+#endif
