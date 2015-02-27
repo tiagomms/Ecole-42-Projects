@@ -33,6 +33,11 @@ void	set_new_info(t_info *info, t_screen *screen)
 	double focus;
 
 	focus = 2.5 / info->zoom;
+	if (focus <= 0.000000000001f)
+	{
+		focus = 0.000000000001f;
+		info->zoom = 2.5 / focus;
+	}
 	info->current_limits_x[0] = info->central_point[0] - focus;
 	info->current_limits_x[1] = info->central_point[0] + focus;
 	info->current_limits_y[0] = info->central_point[1] - focus;
@@ -55,7 +60,7 @@ void	set_info(t_info *info, t_screen *screen)
 	info->current_point[1] = info->current_limits_y[1];
 	info->zoom = 1;
 	info->x_gradient = (info->current_limits_x[1] - info->current_limits_x[0]) /
-						screen->window_size[0];
+						screen->window_size[0]; //elipson
 	info->y_gradient = (info->current_limits_y[1] - info->current_limits_y[0]) /
 						screen->window_size[1];
 	info->colour_gradient = (255.0 / info->max_iterations);

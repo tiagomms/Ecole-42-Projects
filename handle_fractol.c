@@ -72,6 +72,65 @@ void	do_mandelbrot(t_parameters *parameters, int col, int line)
 	//smoothing
 }
 
+double	ft_abs_double(double n)
+{
+	return (n < 0 ? -n : n);
+}
+
+void	do_julia(t_parameters *parameters, int col, int line)
+{
+	double	x0;
+	double	y0;
+	double	x;
+	double	y;
+	double	xtemp;
+	int		iteration;//reverse image for now
+
+	x0 = 1;
+	y0 = -0.45;
+	x = get_current_x0(parameters, col);
+	y = get_current_y0(parameters, line);
+	iteration = 0;
+	while (iteration < parameters->info->max_iterations)
+	{
+		xtemp = (x0 * sin(x) * cosh(y)) - (y0 * cos(x) * sinh(y));
+		y = (x0 * cos(x) * sinh(y)) + (y0 * sin(x) * cosh(y));
+		x = xtemp;
+		if (((x * x) + (y * y)) > (2 * 2))
+			break ;
+		iteration++;
+	}
+	colours((double)iteration, parameters, col, line);
+	//smoothing
+}
+
+void	do_other(t_parameters *parameters, int col, int line)
+{
+	double	x0;
+	double	y0;
+	double	x;
+	double	y;
+	double	xtemp;
+	int		iteration;//reverse image for now
+
+	x0 = parameters->info->current_point[0];
+	y0 = -parameters->info->current_point[1];
+	x = 0;
+	y = 0;
+	iteration = 0;
+	while (iteration < parameters->info->max_iterations)
+	{
+		xtemp = (x * x) - (y * y) + x0;
+		y = (2 * ft_abs_double(x) * ft_abs_double(y)) + y0;
+		x = xtemp;
+		if (((x * x) + (y * y)) > (2 * 2))
+			break ;
+		iteration++;
+	}
+	colours((double)iteration, parameters, col, line);
+	//smoothing
+}
+
 void	handle_fractol(t_parameters *parameters)
 {
 	int	line;
@@ -87,6 +146,10 @@ void	handle_fractol(t_parameters *parameters)
 			parameters->info->current_point[1] = get_current_y0(parameters, line);
 			if (parameters->fractype == MANDELBROT)
 				do_mandelbrot(parameters, col, line);
+			else if (parameters->fractype == OTHER)
+				do_other(parameters, col, line);
+			else if (parameters->fractype == JULIA)
+				do_julia(parameters, col, line);
 			col++;
 		}
 		line++;

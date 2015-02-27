@@ -18,6 +18,8 @@
 # include <math.h>
 # include <stdio.h>//
 
+typedef char		t_bool;
+
 typedef enum		e_fractype
 {
 	JULIA, MANDELBROT, OTHER
@@ -53,6 +55,7 @@ typedef struct		s_parameters
 	t_fractype		fractype;
 	t_info			*info;
 	t_screen		*screen;
+	t_bool			update;
 }					t_parameters;
 
 void				set_screen(t_screen *screen);
@@ -66,5 +69,6 @@ double				get_current_x0(t_parameters *parameters, int col);
 double				get_current_y0(t_parameters *parameters, int line);
 void				handle_fractol(t_parameters *parameters);
 void				set_new_info(t_info *info, t_screen *screen);
+int					loop_hook(t_parameters *parameters);
 
 #endif
