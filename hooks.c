@@ -83,7 +83,7 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 	else if ((button == 4 || button == 5) && rolling == 0) 
 	{
 		rolling = 1;
-		if (button == 5)//limits of zoom don't work
+		if (button == 5 && (2.5 / parameters->info->zoom) > 0.000000000001f)//limits of zoom don't work
 			parameters->info->zoom *= 1.1f;//epsilon changed
 		else if (parameters->info->zoom > 1)
 			parameters->info->zoom /= 1.1f;
