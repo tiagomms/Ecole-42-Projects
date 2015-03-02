@@ -84,10 +84,10 @@ void	do_julia(t_parameters *parameters, int col, int line)
 	double	x;
 	double	y;
 	double	xtemp;
-	int		iteration;//reverse image for now
+	int		iteration;
 
-	x0 = 1;
-	y0 = -0.45;
+	x0 = parameters->info->current_point[0];
+	y0 = parameters->info->current_point[1];
 	x = get_current_x0(parameters, col);
 	y = get_current_y0(parameters, line);
 	iteration = 0;
@@ -104,7 +104,25 @@ void	do_julia(t_parameters *parameters, int col, int line)
 	//smoothing
 }
 
-void	do_other(t_parameters *parameters, int col, int line)
+void	handle_julia(t_parameters *parameters)
+{
+	int line;
+	int col;
+
+	line = 0;
+	while (line < parameters->screen->window_size[0])
+	{
+		col = 0;
+		while (col < parameters->screen->window_size[1])
+		{
+			do_julia(parameters, col, line);
+			col++;
+		}
+		line++;
+	}
+}
+
+void	do_burning_ship(t_parameters *parameters, int col, int line)
 {
 	double	x0;
 	double	y0;
@@ -131,7 +149,7 @@ void	do_other(t_parameters *parameters, int col, int line)
 	//smoothing
 }
 
-void	handle_fractol(t_parameters *parameters)
+void	handle_mandelbrot(t_parameters *parameters)
 {
 	int	line;
 	int	col;
@@ -144,14 +162,39 @@ void	handle_fractol(t_parameters *parameters)
 		{
 			parameters->info->current_point[0] = get_current_x0(parameters, col);
 			parameters->info->current_point[1] = get_current_y0(parameters, line);
-			if (parameters->fractype == MANDELBROT)
-				do_mandelbrot(parameters, col, line);
-			else if (parameters->fractype == OTHER)
-				do_other(parameters, col, line);
-			else if (parameters->fractype == JULIA)
-				do_julia(parameters, col, line);
+			do_mandelbrot(parameters, col, line);
 			col++;
 		}
 		line++;
-	}
+	}		
+}
+
+void	handle_burning_ship(t_parameters *parameters)
+{
+	int	line;
+	int	col;
+
+	line = 0;
+	while (line < parameters->screen->window_size[0])
+	{
+		col = 0;
+		while (col < parameters->screen->window_size[1])
+		{
+			parameters->info->current_point[0] = get_current_x0(parameters, col);
+			parameters->info->current_point[1] = get_current_y0(parameters, line);
+			do_burning_ship(parameters, col, line);
+			col++;
+		}
+		line++;
+	}		
+}
+
+void	handle_fractol(t_parameters *parameters)
+{
+	if (parameters->fractype == JULIA)
+		handle_julia(parameters);
+	if (parameters->fractype == MANDELBROT)
+		handle_mandelbrot(parameters);
+	if (parameters->fractype == OTHER)
+		handle_burning_ship(parameters);
 }

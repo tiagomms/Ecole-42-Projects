@@ -24,6 +24,10 @@ int 	key_hook(int keycode, t_parameters *parameters)
 		set_info(parameters->info, parameters->screen);
 		parameters->update = 1;
 	}
+	if (keycode == 108)
+		parameters->info->lock_activated = 1;
+	if (keycode == 117)
+		parameters->info->lock_activated = 0;
 	ft_putstr("Keycode: ");
 	ft_putnbr(keycode);
 	ft_putchar('\n');
@@ -48,6 +52,23 @@ int		loop_hook(t_parameters *parameters)
 	return (1);
  }
 
+int		mouse_motion_hook(int x, int y, t_parameters *parameters)
+{
+	static int moving = 0;
+
+	if (parameters->fractype == JULIA &&
+		parameters->info->lock_activated == 0 &&
+		moving == 0)
+	{
+		moving = 1;
+		parameters->info->current_point[0] = get_current_x0(parameters, x);
+		parameters->info->current_point[1] = get_current_y0(parameters, y);
+		parameters->update = 1;
+		moving = 0;
+		printf("JULIA: mouse_motion activated --> (x, y) - (%f, %f)\n", parameters->info->central_point[0], parameters->info->central_point[1]);//	
+	}
+}
+
 int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 {
 	static int rolling = 0;
@@ -70,7 +91,6 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 			set_info(parameters->info, parameters->screen);
 		else
 			set_new_info(parameters->info, parameters->screen);
-
 		parameters->update = 1;
 		rolling = 0;
 	}

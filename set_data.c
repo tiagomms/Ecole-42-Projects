@@ -59,6 +59,7 @@ void	set_info(t_info *info, t_screen *screen)
 	info->current_point[0] = info->current_limits_x[0];
 	info->current_point[1] = info->current_limits_y[1];
 	info->zoom = 1;
+	info->lock_activated = 0;
 	info->x_gradient = (info->current_limits_x[1] - info->current_limits_x[0]) /
 						screen->window_size[0]; //elipson
 	info->y_gradient = (info->current_limits_y[1] - info->current_limits_y[0]) /

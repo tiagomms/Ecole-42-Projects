@@ -48,6 +48,7 @@ typedef struct		s_info
 	double			x_gradient;
 	double			y_gradient;
 	double			colour_gradient;
+	t_bool			lock_activated;
 }					t_info;
 
 typedef struct		s_parameters
@@ -70,5 +71,6 @@ double				get_current_y0(t_parameters *parameters, int line);
 void				handle_fractol(t_parameters *parameters);
 void				set_new_info(t_info *info, t_screen *screen);
 int					loop_hook(t_parameters *parameters);
+int					mouse_motion_hook(int x, int y, t_parameters *parameters);
 
 #endif

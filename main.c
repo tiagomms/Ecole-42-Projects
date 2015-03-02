@@ -24,6 +24,8 @@ void	mlx(t_fractype fractype, t_info *info)
 	parameters.fractype = fractype;
 	mlx_expose_hook(parameters.screen->window, expose_hook, &parameters);
 	mlx_mouse_hook(parameters.screen->window, mouse_hook, &parameters);
+	mlx_hook(parameters.screen->window, 6, 1L << 6,
+				mouse_motion_hook, &parameters);
 	mlx_key_hook(parameters.screen->window, key_hook, &parameters);
 	mlx_loop_hook(parameters.screen->mlx_ptr, loop_hook, &parameters);
 	mlx_loop(parameters.screen->mlx_ptr);
