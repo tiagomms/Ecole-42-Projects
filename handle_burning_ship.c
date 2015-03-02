@@ -19,7 +19,7 @@ void	do_burning_ship(t_parameters *parameters, int col, int line)
 	double	x;
 	double	y;
 	double	xtemp;
-	int		iteration;//reverse image for now
+	int		iteration;
 
 	x0 = parameters->info->current_point[0];
 	y0 = -parameters->info->current_point[1];
@@ -36,7 +36,6 @@ void	do_burning_ship(t_parameters *parameters, int col, int line)
 		iteration++;
 	}
 	colours((double)iteration, parameters, col, line);
-	//smoothing
 }
 
 void	handle_burning_ship(t_parameters *parameters)

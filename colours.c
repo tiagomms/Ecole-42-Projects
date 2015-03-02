@@ -17,23 +17,74 @@ int		colour_in_int(int r, int g, int b)
 	return ((r << 16) + (g << 8) + (b));
 }
 
+void	hsb_to_rgb(double current_hue, t_parameters *parameters,
+					int col, int line)
+{
+	double	hue_sector;
+	double	brightness;
+	double	intermediate;
+	double	remaining;
+	int		rgb[3];
+
+	hue_sector = current_hue / 60.0;
+	remaining = hue_sector;
+	while (remaining > 2.0)
+		remaining -= 2.0;
+	brightness = 0.9;
+	intermediate = brightness * (1 - ft_abs_double(remaining - 1.0));
+	if (hue_sector < 1)
+	{
+		rgb[0] = brightness * 255;
+		rgb[1] = intermediate * 255;
+		rgb[2] = 0;
+	}
+	else if (hue_sector < 2)
+	{
+		rgb[0] = intermediate * 255;
+		rgb[1] = brightness * 255;
+		rgb[2] = 0;
+	}
+	else if (hue_sector < 3)
+	{
+		rgb[0] = 0;
+		rgb[1] = brightness * 255;
+		rgb[2] = intermediate * 255;
+	}
+	else if (hue_sector < 4)
+	{
+		rgb[0] = 0;
+		rgb[1] = intermediate * 255;
+		rgb[2] = brightness * 255;
+	}
+	else if (hue_sector < 5)
+	{
+		rgb[0] = intermediate * 255;
+		rgb[1] = 0;
+		rgb[2] = brightness * 255;
+	}
+	else
+	{
+		rgb[0] = brightness * 255;
+		rgb[1] = 0;
+		rgb[2] = intermediate * 255;
+	}
+	parameters->screen->image_data[line * parameters->screen->window_size[0] 
+		+ col] = colour_in_int(rgb[0], rgb[1], rgb[2]);
+}
+
 void	palette_rgb(double iteration, t_parameters *parameters,
 					int col, int line)
 {
-	int		thid_max_iterations;
-	int		current_rgb;
+	double	current_hue;
 
-	thid_max_iterations = parameters->info->max_iterations / 3;
-	current_rgb = (int)floor(((int)iteration % thid_max_iterations) *
-					3 * parameters->info->colour_gradient);
-	if (iteration <= thid_max_iterations)
-		parameters->screen->image_data[line * parameters->screen->window_size[0] + col] = colour_in_int(current_rgb, 0, 0);
-	else if (iteration <= 2 * thid_max_iterations)
+	if (iteration == parameters->info->max_iterations)
+	{
 		parameters->screen->image_data[line * parameters->screen->window_size[0] 
-		+ col] = colour_in_int(0, current_rgb, 0);
-	else
-		parameters->screen->image_data[line * parameters->screen->window_size[0] 
-		+ col] = colour_in_int(0, 0, current_rgb);
+		+ col] = colour_in_int(0, 0, 0);
+		return ;
+	}
+	current_hue = 255 - iteration * parameters->info->colour_gradient;
+	hsb_to_rgb(current_hue, parameters, col, line);
 }
 
 void	palette_bw(double iteration, t_parameters *parameters,
