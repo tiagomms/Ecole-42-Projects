@@ -6,13 +6,13 @@
 /*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 10:57:38 by mbooth            #+#    #+#             */
-/*   Updated: 2015/02/26 10:57:48 by mbooth           ###   ########.fr       */
+/*   Updated: 2015/03/02 16:59:46 by mbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int 	key_hook(int keycode, t_parameters *parameters)
+int		key_hook(int keycode, t_parameters *parameters)
 {
 	if (keycode == 65307)
 	{
@@ -35,22 +35,22 @@ int 	key_hook(int keycode, t_parameters *parameters)
 }
 
 int		loop_hook(t_parameters *parameters)
- {
- 	static int displaying = 0;
+{
+	static int displaying = 0;
 
- 	if (displaying == 1)
- 		return (0);
- 	if (parameters->update == 0)
- 		return (0);
- 	displaying = 1;
+	if (displaying == 1)
+		return (0);
+	if (parameters->update == 0)
+		return (0);
+	displaying = 1;
 	parameters->update = 0;
 	handle_fractol(parameters);
 	mlx_put_image_to_window(parameters->screen->mlx_ptr,
-					parameters->screen->window, 
+					parameters->screen->window,
 					parameters->screen->image_ptr, 0, 0);
 	displaying = 0;
 	return (1);
- }
+}
 
 int		mouse_motion_hook(int x, int y, t_parameters *parameters)
 {
@@ -80,7 +80,7 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 		set_new_info(parameters->info, parameters->screen);
 		parameters->update = 1;
 	}
-	else if ((button == 4 || button == 5) && rolling == 0) 
+	else if ((button == 4 || button == 5) && rolling == 0)
 	{
 		rolling = 1;
 		if (button == 5 && (2.5 / parameters->info->zoom) > 0.000000000001f)//limits of zoom don't work
@@ -100,7 +100,6 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 
 int		expose_hook(t_parameters *parameters)
 {
-
 	handle_fractol(parameters);
 	mlx_put_image_to_window(parameters->screen->mlx_ptr,
 						parameters->screen->window, 

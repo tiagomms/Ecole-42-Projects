@@ -36,17 +36,24 @@ int		main(int argc, char **argv)
 	t_fractype	fractype;
 	t_info		info;
 
-	if (argc == 3)
+	if (argc == 2 || argc == 3)
 	{
 		if (!(ft_strcmp(argv[1], "mandelbrot")))
-			fractype = MANDELBROT;
+			fractype = MANDELBROT; // check flags Makefile
 		else if (!(ft_strcmp(argv[1], "julia")))
 			fractype = JULIA;
 		else if (!(ft_strcmp(argv[1], "other")))
 			fractype = OTHER;
-		//else error
-		info.max_iterations = custom_atoi(argv[2]);
-	}//take care of iterations case <= 0
+		else
+		{
+			ft_putstr_fd("Invalid Selection\n", 2);
+			exit(0);
+		}
+		if (argc == 3)
+			info.max_iterations = custom_atoi(argv[2]);
+		else
+			info.max_iterations = 100;
+	}
 	mlx(fractype, &info);
 	return (0);
 }

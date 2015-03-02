@@ -6,14 +6,14 @@
 #    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 17:52:57 by tfleming          #+#    #+#              #
-#    Updated: 2015/02/26 10:40:57 by mbooth           ###   ########.fr        #
+#    Updated: 2015/03/02 16:49:12 by mbooth           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME =			fractol
 
 CC =			gcc
-FLAGS =			-g -O3
+FLAGS =			-O3 
 LIBFT =			"libft/"
 X11 =			"/usr/X11/lib"
 

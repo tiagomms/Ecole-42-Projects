@@ -6,7 +6,7 @@
 /*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 14:03:50 by mbooth            #+#    #+#             */
-/*   Updated: 2015/03/02 14:03:52 by mbooth           ###   ########.fr       */
+/*   Updated: 2015/03/02 17:01:51 by mbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	do_burning_ship(t_parameters *parameters, int col, int line)
 	colours((double)iteration, parameters, col, line);
 	//smoothing
 }
+
 void	handle_burning_ship(t_parameters *parameters)
 {
 	int	line;
@@ -49,11 +50,13 @@ void	handle_burning_ship(t_parameters *parameters)
 		col = 0;
 		while (col < parameters->screen->window_size[1])
 		{
-			parameters->info->current_point[0] = get_current_x0(parameters, col);
-			parameters->info->current_point[1] = get_current_y0(parameters, line);
+			parameters->info->current_point[0] =
+				get_current_x0(parameters, col);
+			parameters->info->current_point[1] =
+				get_current_y0(parameters, line);
 			do_burning_ship(parameters, col, line);
 			col++;
 		}
 		line++;
-	}		
+	}
 }

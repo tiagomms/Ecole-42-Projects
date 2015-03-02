@@ -18,6 +18,8 @@
 # include <math.h>
 # include <stdio.h>//
 
+# define MAX_ITER	500
+
 typedef char		t_bool;
 
 typedef enum		e_fractype

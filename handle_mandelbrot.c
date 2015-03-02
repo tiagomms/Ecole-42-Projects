@@ -6,7 +6,7 @@
 /*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 14:03:39 by mbooth            #+#    #+#             */
-/*   Updated: 2015/03/02 14:03:40 by mbooth           ###   ########.fr       */
+/*   Updated: 2015/03/02 17:03:04 by mbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void	handle_mandelbrot(t_parameters *parameters)
 			col++;
 		}
 		line++;
-	}		
+	}
 }
