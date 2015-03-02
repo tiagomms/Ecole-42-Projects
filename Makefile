@@ -25,6 +25,10 @@ COMPILED =		main.o\
 				custom_atoi.o\
 				hooks.o\
 				handle_fractol.o\
+				colours.o\
+				handle_burning_ship.o\
+				handle_julia.o\
+				handle_mandelbrot.o\
 
 all: $(NAME)
 

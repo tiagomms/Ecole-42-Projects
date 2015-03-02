@@ -25,6 +25,11 @@ typedef enum		e_fractype
 	JULIA, MANDELBROT, OTHER
 }					t_fractype;
 
+typedef enum		e_palette
+{
+	BW, RGB, THIRD
+}					t_palette;
+
 typedef	struct		s_screen
 {
 	void			*mlx_ptr;
@@ -48,7 +53,6 @@ typedef struct		s_info
 	double			x_gradient;
 	double			y_gradient;
 	double			colour_gradient;
-	t_bool			lock_activated;
 }					t_info;
 
 typedef struct		s_parameters
@@ -57,10 +61,12 @@ typedef struct		s_parameters
 	t_info			*info;
 	t_screen		*screen;
 	t_bool			update;
+	t_palette		palette;
+	t_bool			lock_activated;	
 }					t_parameters;
 
 void				set_screen(t_screen *screen);
-void				set_info(t_info *info, t_screen *screen);
+void				set_info(t_info *info, t_screen *screen, t_parameters *parameters);
 int					custom_atoi(const char *str);
 int					mouse_hook(int button, int x, int y,
 					t_parameters *parameters);
@@ -72,5 +78,13 @@ void				handle_fractol(t_parameters *parameters);
 void				set_new_info(t_info *info, t_screen *screen);
 int					loop_hook(t_parameters *parameters);
 int					mouse_motion_hook(int x, int y, t_parameters *parameters);
+void				handle_julia(t_parameters *parameters);
+void				handle_burning_ship(t_parameters *parameters);
+void				handle_mandelbrot(t_parameters *parameters);
+void				colours(double iteration,
+						t_parameters *parameters, int col, int line);
+double				ft_abs_double(double n);
+double				get_current_x0(t_parameters *parameters, int col);
+double				get_current_y0(t_parameters *parameters, int line);
 
 #endif
