@@ -24,6 +24,8 @@ void	changing_palettes(int keycode, t_parameters *parameters)
 		parameters->background_hue += 10;
 	else if (keycode == 'w' && parameters->palette == RGB)
 		parameters->background_hue -= 10;
+	else
+		return ;
 	if (parameters->background_hue < 0)
 		parameters->background_hue += 360;
 	else if (parameters->background_hue > 360)
@@ -48,6 +50,34 @@ void	moving_with_arrows(int keycode, t_parameters *parameters)
 		parameters->info->central_point[1] += move;
 	else if (keycode == 65364)
 		parameters->info->central_point[1] -= move;
+	else
+		return ;
+	set_new_info(parameters->info, parameters->screen);
+	parameters->update = 1;
+}
+
+void	changing_fractal(int keycode, t_parameters *parameters)
+{
+	if (keycode == 49)
+		parameters->fractype = JULIA;
+	else if (keycode == 50)
+		parameters->fractype = MANDELBROT;
+	else if (keycode == 51)
+		parameters->fractype = BURNING;
+	else if (keycode == 52)
+		parameters->fractype = OTHER1;
+	else if (keycode == 53)
+		parameters->fractype = OTHER2;
+	else if (keycode == 54)
+		parameters->fractype = OTHER3;
+	else if (keycode == 55)
+		parameters->fractype = NOVA;
+	else if (keycode == 56)
+		parameters->fractype = OTHER5;
+	else if (keycode == 57)
+		parameters->fractype = OTHER6;
+	else
+		return ;
 	set_new_info(parameters->info, parameters->screen);
 	parameters->update = 1;
 }
@@ -70,6 +100,7 @@ int		key_hook(int keycode, t_parameters *parameters)
 		parameters->lock_activated = 0;
 	moving_with_arrows(keycode, parameters);
 	changing_palettes(keycode, parameters);
+	changing_fractal(keycode, parameters);
 	ft_putstr("Keycode: ");
 	ft_putnbr(keycode);
 	ft_putchar('\n');

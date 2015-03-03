@@ -26,10 +26,8 @@ void	do_other6(t_parameters *parameters, int col, int line)
 	iteration = 0;
 	while (iteration < parameters->info->max_iterations)
 	{
-		xtemp = (parameters->info->current_point[0] * sin(x) * cosh(y))
-				- (y0 * cos(x) * sinh(y));
-		y = (parameters->info->current_point[0] * cos(x) * sinh(y))
-			+ (y0 * sin(x) * cosh(y));
+		xtemp = (exp((x * x) - (y * y)) * cos(2 * x * y)) + parameters->info->current_point[0];
+		y = (exp((x * x) - (y * y)) * sin(2 * x * y)) + parameters->info->current_point[0];
 		x = xtemp;
 		if (((x * x) + (y * y)) > (2 * 2))
 			break ;

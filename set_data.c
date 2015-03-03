@@ -43,6 +43,16 @@ void	set_screen(t_screen *screen)
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 380, 0xFFFFFF,"r              reset current fractal");
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 400, 0xFFFFFF,"ESC key        quit");
 
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 500, 0xFFFFFF,"Fractol options");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 520, 0xFFFFFF,"1              julia");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 540, 0xFFFFFF,"2              mandelbrot");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 560, 0xFFFFFF,"3              burning");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 580, 0xFFFFFF,"4              other1");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 600, 0xFFFFFF,"5              other2");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 620, 0xFFFFFF,"6              other3");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 640, 0xFFFFFF,"7              nova");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 660, 0xFFFFFF,"8              other4");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 680, 0xFFFFFF,"9              other5");
 }
 
 void	set_new_info(t_info *info, t_screen *screen)
