@@ -42,7 +42,6 @@ void	set_screen(t_screen *screen)
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 360, 0xFFFFFF,"right arrow    move central point right");
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 380, 0xFFFFFF,"r              reset current fractal");
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 400, 0xFFFFFF,"ESC key        quit");
-
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 500, 0xFFFFFF,"Fractol options");
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 520, 0xFFFFFF,"1              julia");
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 540, 0xFFFFFF,"2              mandelbrot");
@@ -86,7 +85,7 @@ void	set_info(t_info *info, t_screen *screen, t_parameters *parameters)
 	info->zoom = 1;
 	parameters->background_hue = 255;
 	parameters->lock_activated = 0;
-	parameters->relaxation_const = 2;
+	parameters->relaxation_c = 2;
 	parameters->palette = RGB;
 	info->epsilon = (info->current_limits_x[1] - info->current_limits_x[0]) /
 						screen->window_size[0];
