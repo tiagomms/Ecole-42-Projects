@@ -39,7 +39,8 @@ void	moving_with_arrows(int keycode, t_parameters *parameters)
 
 	if (if_julia_and_others(parameters) && !parameters->lock_activated)
 		return ;
-	move = 0.5 / parameters->info->zoom;
+	move = (parameters->info->initial_axis_length / 5);
+	move /= parameters->info->zoom;
 	if (move <= 0.0000000000002f)
 		move = 0.0000000000002f;
 	if (keycode == 65361)
@@ -78,12 +79,43 @@ void	changing_fractal(int keycode, t_parameters *parameters)
 		parameters->fractype = OTHER6;
 	else
 		return ;
-	set_new_info(parameters->info, parameters->screen);
+	set_info(parameters->info, parameters->screen, parameters);
 	parameters->update = 1;
+}
+
+void	changing_relaxation_const(int keycode, t_parameters *parameters)
+{
+	if (parameters->fractype == NOVA && (keycode == 'z' || keycode == 'x'
+		|| keycode == 'r'))
+	{
+		if (keycode == 'z' && parameters->relaxation_c < 6)
+			parameters->relaxation_c++;
+		if (keycode == 'x' && parameters->relaxation_c > 1)
+			parameters->relaxation_c--;
+		if (parameters->relaxation_c == 1)
+			parameters->info->initial_axis_length = 2.5;
+		else if (parameters->relaxation_c == 2)
+			parameters->info->initial_axis_length = 7;
+		else if (parameters->relaxation_c == 3)
+			parameters->info->initial_axis_length = 9;
+		else if (parameters->relaxation_c == 4)
+			parameters->info->initial_axis_length = 10;
+		else if (parameters->relaxation_c == 5)
+			parameters->info->initial_axis_length = 8;
+		else if (parameters->relaxation_c == 6)
+			parameters->info->initial_axis_length = 2.5;
+		parameters->info->zoom = 1;
+		parameters->lock_activated = 0;
+		set_new_info(parameters->info, parameters->screen);
+		parameters->update = 1;
+	}
 }
 
 int		key_hook(int keycode, t_parameters *parameters)
 {
+	double	relaxation_const;
+
+	relaxation_const = parameters->relaxation_c;
 	if (keycode == 65307)
 	{
 		ft_putstr_fd("\nWINDOW CLOSED\n", 1);
@@ -92,6 +124,7 @@ int		key_hook(int keycode, t_parameters *parameters)
 	if (keycode == 'r')
 	{
 		set_info(parameters->info, parameters->screen, parameters);
+		parameters->relaxation_c = relaxation_const;
 		parameters->update = 1;
 	}
 	if (keycode == 'l')
@@ -101,9 +134,10 @@ int		key_hook(int keycode, t_parameters *parameters)
 	moving_with_arrows(keycode, parameters);
 	changing_palettes(keycode, parameters);
 	changing_fractal(keycode, parameters);
-	ft_putstr("Keycode: ");
-	ft_putnbr(keycode);
-	ft_putchar('\n');
+	changing_relaxation_const(keycode, parameters);
+	ft_putstr("Keycode: ");//
+	ft_putnbr(keycode);//
+	ft_putchar('\n');//
 	return (keycode);
 }
 
@@ -131,7 +165,7 @@ int		mouse_motion_hook(int x, int y, t_parameters *parameters)
 
 	if (if_julia_and_others(parameters) &&
 		parameters->lock_activated == 0 &&
-		moving == 0)
+		moving == 0 && x <= parameters->screen->window_size[0])
 	{
 		moving = 1;
 		parameters->info->current_point[0] = get_current_x0(parameters, x);

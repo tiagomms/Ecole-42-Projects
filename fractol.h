@@ -54,6 +54,7 @@ typedef struct		s_info
 	double			current_point[2];
 	double			epsilon;
 	double			colour_gradient;
+	double			initial_axis_length;
 }					t_info;
 
 typedef struct		s_parameters

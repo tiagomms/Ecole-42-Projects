@@ -45,6 +45,8 @@ void	handle_nova(t_parameters *parameters)
 	int col;
 
 	line = 0;
+	if (parameters->relaxation_c == 0)
+		parameters->relaxation_c = 3;
 	while (line < parameters->screen->window_size[0])
 	{
 		col = 0;
