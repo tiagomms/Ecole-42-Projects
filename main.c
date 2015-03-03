@@ -42,8 +42,20 @@ int		main(int argc, char **argv)
 			fractype = MANDELBROT; // check flags Makefile
 		else if (!(ft_strcmp(argv[1], "julia")))
 			fractype = JULIA;
-		else if (!(ft_strcmp(argv[1], "other")))
-			fractype = OTHER;
+		else if (!(ft_strcmp(argv[1], "burning")))
+			fractype = BURNING;
+		else if (!(ft_strcmp(argv[1], "other1")))
+			fractype = OTHER1;
+		else if (!(ft_strcmp(argv[1], "other2")))
+			fractype = OTHER2;
+		else if (!(ft_strcmp(argv[1], "other3")))
+			fractype = OTHER3;
+		else if (!(ft_strcmp(argv[1], "other4")))
+			fractype = OTHER4;
+		else if (!(ft_strcmp(argv[1], "other5")))
+			fractype = OTHER5;
+		else if (!(ft_strcmp(argv[1], "other6")))
+			fractype = OTHER6;
 		else
 		{
 			ft_putstr_fd("Invalid Selection\n", 2);

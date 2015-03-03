@@ -12,14 +12,44 @@
 
 #include "fractol.h"
 
-int		moving_with_arrows(int keycode, t_parameters *parameters)
+void	changing_palettes(int keycode, t_parameters *parameters)
+{
+	if (keycode == 'b')
+		parameters->palette = BW;
+	else if (keycode == 'n')
+		parameters->palette = RGB;
+	else if (keycode == 'm')
+		parameters->palette = FIXED_COLORS;
+	else if (keycode == 'q' && parameters->palette == RGB)
+		parameters->background_hue += 10;
+	else if (keycode == 'w' && parameters->palette == RGB)
+		parameters->background_hue -= 10;
+	if (parameters->background_hue < 0)
+		parameters->background_hue += 360;
+	else if (parameters->background_hue > 360)
+		parameters->background_hue -= 360;
+	parameters->update = 1;
+}
+
+void	moving_with_arrows(int keycode, t_parameters *parameters)
 {
 	double move;
 
+	if (parameters->fractype == JULIA && !parameters->lock_activated)
+		return ;
 	move = 0.5 / parameters->info->zoom;
 	if (move <= 0.0000000000002f)
 		move = 0.0000000000002f;
-	
+	if (keycode == 65361)
+		parameters->info->central_point[0] -= move;
+	else if (keycode == 65363)
+		parameters->info->central_point[0] += move;
+	else if (keycode == 65362)
+		parameters->info->central_point[1] += move;
+	else if (keycode == 65364)
+		parameters->info->central_point[1] -= move;
+	set_new_info(parameters->info, parameters->screen);
+	parameters->update = 1;
 }
 
 int		key_hook(int keycode, t_parameters *parameters)
@@ -29,15 +59,17 @@ int		key_hook(int keycode, t_parameters *parameters)
 		ft_putstr_fd("\nWINDOW CLOSED\n", 1);
 		exit(0);
 	}
-	if (keycode == 114)
+	if (keycode == 'r')
 	{
 		set_info(parameters->info, parameters->screen, parameters);
 		parameters->update = 1;
 	}
-	if (keycode == 108)
+	if (keycode == 'l')
 		parameters->lock_activated = 1;
-	if (keycode == 117)
+	if (keycode == 'u')
 		parameters->lock_activated = 0;
+	moving_with_arrows(keycode, parameters);
+	changing_palettes(keycode, parameters);
 	ft_putstr("Keycode: ");
 	ft_putnbr(keycode);
 	ft_putchar('\n');
@@ -84,7 +116,7 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 	static int rolling = 0;
 
 	if (parameters->fractype == JULIA && !parameters->lock_activated)
-		return ;
+		return (0);
 	if (button == 1 || button == 3)
 	{
 		parameters->info->central_point[0] = get_current_x0(parameters, x);
@@ -95,12 +127,12 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 	else if ((button == 4 || button == 5) && rolling == 0)
 	{
 		rolling = 1;
-		if (button == 5 && (2.5 / (parameters->info->zoom * 1.1)) > 0.000000000001f)//limits of zoom don't work
-			parameters->info->zoom *= 1.1f;//epsilon changed
+		if (button == 5 && (2.5 / (parameters->info->zoom * 1.05)) > 0.000000000001f)//limits of zoom don't work
+			parameters->info->zoom *= 1.05f;//epsilon changed
 		else if (parameters->info->zoom > 1)
-			parameters->info->zoom /= 1.1f;
+			parameters->info->zoom /= 1.05f;
 		if (parameters->info->zoom <= 1)
-			set_info(parameters->info, parameters->screen, parameters);//change this after
+			set_info(parameters->info, parameters->screen, parameters);
 		else
 			set_new_info(parameters->info, parameters->screen);
 		parameters->update = 1;
@@ -116,5 +148,5 @@ int		expose_hook(t_parameters *parameters)
 	mlx_put_image_to_window(parameters->screen->mlx_ptr,
 						parameters->screen->window, 
 						parameters->screen->image_ptr, 0, 0);
-	return (1); //double check this
+	return (1);
 }

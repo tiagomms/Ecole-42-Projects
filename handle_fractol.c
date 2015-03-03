@@ -22,7 +22,7 @@ double	get_current_x0(t_parameters *parameters, int col)
 	double result;
 
 	result = parameters->info->current_limits_x[0] +
-				(col * parameters->info->x_gradient);
+				(col * parameters->info->epsilon);
 	return (result);
 }
 
@@ -31,7 +31,7 @@ double	get_current_y0(t_parameters *parameters, int line)
 	double result;
 
 	result = parameters->info->current_limits_y[1] -
-				(line * parameters->info->y_gradient);
+				(line * parameters->info->epsilon);
 	return (result);
 }
 
@@ -41,6 +41,18 @@ void	handle_fractol(t_parameters *parameters)
 		handle_julia(parameters);
 	if (parameters->fractype == MANDELBROT)
 		handle_mandelbrot(parameters);
-	if (parameters->fractype == OTHER)
+	if (parameters->fractype == BURNING)
 		handle_burning_ship(parameters);
+	if (parameters->fractype == OTHER1)
+		handle_other1(parameters);
+	if (parameters->fractype == OTHER2)
+		handle_other2(parameters);
+	if (parameters->fractype == OTHER3)
+		handle_other3(parameters);
+	if (parameters->fractype == OTHER4)
+		handle_other4(parameters);
+	if (parameters->fractype == OTHER5)
+		handle_other5(parameters);
+	if (parameters->fractype == OTHER6)
+		handle_other6(parameters);
 }

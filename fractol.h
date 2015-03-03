@@ -24,12 +24,12 @@ typedef char		t_bool;
 
 typedef enum		e_fractype
 {
-	JULIA, MANDELBROT, OTHER
+	JULIA, MANDELBROT, BURNING, OTHER1, OTHER2, OTHER3, OTHER4, OTHER5, OTHER6
 }					t_fractype;
 
 typedef enum		e_palette
 {
-	BW, RGB, THIRD
+	BW, RGB, FIXED_COLORS
 }					t_palette;
 
 typedef	struct		s_screen
@@ -52,8 +52,7 @@ typedef struct		s_info
 	double			current_limits_y[2];
 	double			zoom;
 	double			current_point[2];
-	double			x_gradient;
-	double			y_gradient;
+	double			epsilon;
 	double			colour_gradient;
 }					t_info;
 
@@ -64,7 +63,8 @@ typedef struct		s_parameters
 	t_screen		*screen;
 	t_bool			update;
 	t_palette		palette;
-	t_bool			lock_activated;	
+	t_bool			lock_activated;
+	int				background_hue;
 }					t_parameters;
 
 void				set_screen(t_screen *screen);
@@ -88,5 +88,11 @@ void				colours(double iteration,
 double				ft_abs_double(double n);
 double				get_current_x0(t_parameters *parameters, int col);
 double				get_current_y0(t_parameters *parameters, int line);
+void				handle_other1(t_parameters *parameters);
+void				handle_other2(t_parameters *parameters);
+void				handle_other3(t_parameters *parameters);
+void				handle_other4(t_parameters *parameters);
+void				handle_other5(t_parameters *parameters);
+void				handle_other6(t_parameters *parameters);
 
 #endif

@@ -12,50 +12,21 @@
 
 #include "fractol.h"
 
-void	do_julia_sin(t_parameters *parameters, int col, int line)
-{
-	double	x0;
-	double	y0;
-	double	x;
-	double	y;
-	double	xtemp;
-	int		iteration;
-
-	x0 = parameters->info->current_point[0];
-	y0 = parameters->info->current_point[1];
-	x = get_current_x0(parameters, col);
-	y = get_current_y0(parameters, line);
-	iteration = 0;
-	while (iteration < parameters->info->max_iterations)
-	{
-		xtemp = (x0 * sin(x) * cosh(y)) - (y0 * cos(x) * sinh(y));
-		y = (x0 * cos(x) * sinh(y)) + (y0 * sin(x) * cosh(y));
-		x = xtemp;
-		if (((x * x) + (y * y)) > (2 * 2))
-			break ;
-		iteration++;
-	}
-	colours((double)iteration, parameters, col, line);
-	//smoothing
-}
-
 void	do_julia(t_parameters *parameters, int col, int line)
 {
-	double	x0;
 	double	y0;
 	double	x;
 	double	y;
 	double	xtemp;
 	int		iteration;
 
-	x0 = parameters->info->current_point[0];
 	y0 = parameters->info->current_point[1];
 	x = get_current_x0(parameters, col);
 	y = get_current_y0(parameters, line);
 	iteration = 0;
 	while (iteration < parameters->info->max_iterations)
 	{
-		xtemp = (x * x) - (y * y) + x0;
+		xtemp = (x * x) - (y * y) + parameters->info->current_point[0];
 		y = (2 * x * y) + y0;
 		x = xtemp;
 		if (((x * x) + (y * y)) > (2 * 2))
@@ -63,7 +34,6 @@ void	do_julia(t_parameters *parameters, int col, int line)
 		iteration++;
 	}
 	colours((double)iteration, parameters, col, line);
-	//smoothing
 }
 
 void	handle_julia(t_parameters *parameters)

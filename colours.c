@@ -72,6 +72,23 @@ void	hsb_to_rgb(double current_hue, t_parameters *parameters,
 		+ col] = colour_in_int(rgb[0], rgb[1], rgb[2]);
 }
 
+void	palette_fixed_colours(double iteration, t_parameters *parameters,
+					int col, int line)
+{
+	double	current_hue;
+
+	if (iteration == parameters->info->max_iterations)
+	{
+		parameters->screen->image_data[line * parameters->screen->window_size[0] 
+		+ col] = colour_in_int(0, 0, 0);
+		return ;
+	}
+	current_hue = 112 - iteration * parameters->info->colour_gradient;
+	if (current_hue < 0)
+		current_hue += 360;
+	hsb_to_rgb(current_hue, parameters, col, line);
+}
+
 void	palette_rgb(double iteration, t_parameters *parameters,
 					int col, int line)
 {
@@ -83,7 +100,9 @@ void	palette_rgb(double iteration, t_parameters *parameters,
 		+ col] = colour_in_int(0, 0, 0);
 		return ;
 	}
-	current_hue = 255 - iteration * parameters->info->colour_gradient;
+	current_hue = parameters->background_hue - iteration * parameters->info->colour_gradient;
+	if (current_hue < 0)
+		current_hue += 360;
 	hsb_to_rgb(current_hue, parameters, col, line);
 }
 
@@ -104,6 +123,6 @@ void	colours(double iteration, t_parameters *parameters,
 		palette_rgb(iteration, parameters, col, line);
 	else if (parameters->palette == BW)
 		palette_bw(iteration, parameters, col, line);
-	//else if (parameters->palette == THIRD)
-	//	palette_third(iteration, parameters, col, line);
+	else if (parameters->palette == FIXED_COLORS)
+		palette_fixed_colours(iteration, parameters, col, line);
 }

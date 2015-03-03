@@ -17,15 +17,32 @@ void	set_screen(t_screen *screen)
 	screen->mlx_ptr = mlx_init();
 	screen->window_size[0] = 1000;
 	screen->window_size[1] = 1000;
-	screen->window = mlx_new_window(screen->mlx_ptr, screen->window_size[0],
+	screen->window = mlx_new_window(screen->mlx_ptr, 1420,
 								screen->window_size[1], "Fractol");
-	screen->image_ptr = mlx_new_image(screen->mlx_ptr, screen->window_size[0],
+	screen->image_ptr = mlx_new_image(screen->mlx_ptr, screen->window_size[0] ,
 								screen->window_size[1]);
 	screen->image_data = (unsigned int*)mlx_get_data_addr(screen->image_ptr,
 							&screen->bits_per_pixel, &screen->size_line,
 							&screen->endian);
 	screen->endian = 1;
 	screen->size_line /= 4;
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 100, 0xFFFFFF,"Menu of Options:");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 120, 0xFFFFFF,"Mouse click    change central point");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 140, 0xFFFFFF,"Scroll wheel   zoom in/out");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 160, 0xFFFFFF,"b              palette - black/white");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 180, 0xFFFFFF,"m              palette - fixed green");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 200, 0xFFFFFF,"n              palette - varied");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 220, 0xFFFFFF,"q              increase hue");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 240, 0xFFFFFF,"w              decrease hue");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 260, 0xFFFFFF,"l              julia - activate lock");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 280, 0xFFFFFF,"u              julia - deactivate lock");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 300, 0xFFFFFF,"up arrow       move central point up");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 320, 0xFFFFFF,"down arrow     move central point down");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 340, 0xFFFFFF,"left arrow     move central point left");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 360, 0xFFFFFF,"right arrow    move central point right");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 380, 0xFFFFFF,"r              reset current fractal");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 400, 0xFFFFFF,"ESC key        quit");
+
 }
 
 void	set_new_info(t_info *info, t_screen *screen)
@@ -42,10 +59,8 @@ void	set_new_info(t_info *info, t_screen *screen)
 	info->current_limits_x[1] = info->central_point[0] + focus;
 	info->current_limits_y[0] = info->central_point[1] - focus;
 	info->current_limits_y[1] = info->central_point[1] + focus;
-	info->x_gradient = (info->current_limits_x[1] - info->current_limits_x[0]) /
+	info->epsilon = (info->current_limits_x[1] - info->current_limits_x[0]) /
 						screen->window_size[0];
-	info->y_gradient = (info->current_limits_y[1] - info->current_limits_y[0]) /
-						screen->window_size[1];
 }
 
 void	set_info(t_info *info, t_screen *screen, t_parameters *parameters)
@@ -59,11 +74,10 @@ void	set_info(t_info *info, t_screen *screen, t_parameters *parameters)
 	info->current_point[0] = info->current_limits_x[0];
 	info->current_point[1] = info->current_limits_y[1];
 	info->zoom = 1;
+	parameters->background_hue = 255;
 	parameters->lock_activated = 0;
 	parameters->palette = RGB;
-	info->x_gradient = (info->current_limits_x[1] - info->current_limits_x[0]) /
-						screen->window_size[0]; //elipson
-	info->y_gradient = (info->current_limits_y[1] - info->current_limits_y[0]) /
-						screen->window_size[1];
+	info->epsilon = (info->current_limits_x[1] - info->current_limits_x[0]) /
+						screen->window_size[0];
 	info->colour_gradient = (255.0 / info->max_iterations);
 }
