@@ -12,6 +12,16 @@
 
 #include "fractol.h"
 
+int		moving_with_arrows(int keycode, t_parameters *parameters)
+{
+	double move;
+
+	move = 0.5 / parameters->info->zoom;
+	if (move <= 0.0000000000002f)
+		move = 0.0000000000002f;
+	
+}
+
 int		key_hook(int keycode, t_parameters *parameters)
 {
 	if (keycode == 65307)
@@ -73,6 +83,8 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 {
 	static int rolling = 0;
 
+	if (parameters->fractype == JULIA && !parameters->lock_activated)
+		return ;
 	if (button == 1 || button == 3)
 	{
 		parameters->info->central_point[0] = get_current_x0(parameters, x);
