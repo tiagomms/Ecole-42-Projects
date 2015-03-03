@@ -65,7 +65,7 @@ typedef struct		s_parameters
 	t_palette		palette;
 	t_bool			lock_activated;
 	int				background_hue;
-	int				relaxation_const;
+	int				relaxation_c;
 }					t_parameters;
 
 void				set_screen(t_screen *screen);
