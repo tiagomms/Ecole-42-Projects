@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_other4.c                                    :+:      :+:    :+:   */
+/*   handle_nova.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,24 +12,25 @@
 
 #include "fractol.h"
 
-void	do_other4(t_parameters *parameters, int col, int line)
+void	do_nova(t_parameters *parameters, int col, int line)
 {
-	double	y0;
+	double	constant;
 	double	x;
 	double	y;
 	double	xtemp;
 	int		iteration;
 
-	y0 = parameters->info->current_point[1];
+	constant = (parameters->relaxation_const / (3 * ((x * x + y * y) * (x * x + y * y))));
 	x = get_current_x0(parameters, col);
 	y = get_current_y0(parameters, line);
 	iteration = 0;
 	while (iteration < parameters->info->max_iterations)
 	{
-		xtemp = (parameters->info->current_point[0] * sin(x) * cosh(y))
-				- (y0 * cos(x) * sinh(y));
-		y = (parameters->info->current_point[0] * cos(x) * sinh(y))
-			+ (y0 * sin(x) * cosh(y));
+		xtemp = parameters->info->current_point[0] + x + constant * ((x * x) -
+			(y * y) - (x * y * y * y * y) - (x * x * x * x * x) -
+			(2 * x * x * x * y * y));
+		y = parameters->info->current_point[1] + y - constant * y * 
+		((2 * x) + (y * y * y * y) + (2 * x * x * y * y) + (x * x * x * x));
 		x = xtemp;
 		if (((x * x) + (y * y)) > (2 * 2))
 			break ;
@@ -38,7 +39,7 @@ void	do_other4(t_parameters *parameters, int col, int line)
 	colours((double)iteration, parameters, col, line);
 }
 
-void	handle_other4(t_parameters *parameters)
+void	handle_nova(t_parameters *parameters)
 {
 	int line;
 	int col;
@@ -49,7 +50,7 @@ void	handle_other4(t_parameters *parameters)
 		col = 0;
 		while (col < parameters->screen->window_size[1])
 		{
-			do_other4(parameters, col, line);
+			do_nova(parameters, col, line);
 			col++;
 		}
 		line++;

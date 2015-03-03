@@ -12,6 +12,13 @@
 
 #include "fractol.h"
 
+int		if_julia_and_others(t_parameters *parameters)
+{
+	if (parameters->fractype != MANDELBROT && parameters->fractype != BURNING)
+		return (1);
+	return (0);
+}
+
 double	ft_abs_double(double n)
 {
 	return (n < 0 ? -n : n);
@@ -49,8 +56,8 @@ void	handle_fractol(t_parameters *parameters)
 		handle_other2(parameters);
 	if (parameters->fractype == OTHER3)
 		handle_other3(parameters);
-	if (parameters->fractype == OTHER4)
-		handle_other4(parameters);
+	if (parameters->fractype == NOVA)
+		handle_nova(parameters);
 	if (parameters->fractype == OTHER5)
 		handle_other5(parameters);
 	if (parameters->fractype == OTHER6)

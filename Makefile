@@ -32,7 +32,7 @@ COMPILED =		main.o\
 				handle_other1.o\
 				handle_other2.o\
 				handle_other3.o\
-				handle_other4.o\
+				handle_nova.o\
 				handle_other5.o\
 				handle_other6.o\
 

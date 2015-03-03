@@ -76,6 +76,7 @@ void	set_info(t_info *info, t_screen *screen, t_parameters *parameters)
 	info->zoom = 1;
 	parameters->background_hue = 255;
 	parameters->lock_activated = 0;
+	parameters->relaxation_const = 2;
 	parameters->palette = RGB;
 	info->epsilon = (info->current_limits_x[1] - info->current_limits_x[0]) /
 						screen->window_size[0];

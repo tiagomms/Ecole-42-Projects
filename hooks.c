@@ -35,7 +35,7 @@ void	moving_with_arrows(int keycode, t_parameters *parameters)
 {
 	double move;
 
-	if (parameters->fractype == JULIA && !parameters->lock_activated)
+	if (if_julia_and_others(parameters) && !parameters->lock_activated)
 		return ;
 	move = 0.5 / parameters->info->zoom;
 	if (move <= 0.0000000000002f)
@@ -98,7 +98,7 @@ int		mouse_motion_hook(int x, int y, t_parameters *parameters)
 {
 	static int moving = 0;
 
-	if (parameters->fractype == JULIA &&
+	if (if_julia_and_others(parameters) &&
 		parameters->lock_activated == 0 &&
 		moving == 0)
 	{
@@ -115,7 +115,7 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 {
 	static int rolling = 0;
 
-	if (parameters->fractype == JULIA && !parameters->lock_activated)
+	if (if_julia_and_others(parameters) && !parameters->lock_activated)
 		return (0);
 	if (button == 1 || button == 3)
 	{

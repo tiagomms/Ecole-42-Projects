@@ -50,8 +50,8 @@ int		main(int argc, char **argv)
 			fractype = OTHER2;
 		else if (!(ft_strcmp(argv[1], "other3")))
 			fractype = OTHER3;
-		else if (!(ft_strcmp(argv[1], "other4")))
-			fractype = OTHER4;
+		else if (!(ft_strcmp(argv[1], "nova")))
+			fractype = NOVA;
 		else if (!(ft_strcmp(argv[1], "other5")))
 			fractype = OTHER5;
 		else if (!(ft_strcmp(argv[1], "other6")))

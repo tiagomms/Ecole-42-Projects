@@ -24,7 +24,7 @@ typedef char		t_bool;
 
 typedef enum		e_fractype
 {
-	JULIA, MANDELBROT, BURNING, OTHER1, OTHER2, OTHER3, OTHER4, OTHER5, OTHER6
+	JULIA, MANDELBROT, BURNING, OTHER1, OTHER2, OTHER3, NOVA, OTHER5, OTHER6
 }					t_fractype;
 
 typedef enum		e_palette
@@ -65,6 +65,7 @@ typedef struct		s_parameters
 	t_palette		palette;
 	t_bool			lock_activated;
 	int				background_hue;
+	int				relaxation_const;
 }					t_parameters;
 
 void				set_screen(t_screen *screen);
@@ -91,8 +92,9 @@ double				get_current_y0(t_parameters *parameters, int line);
 void				handle_other1(t_parameters *parameters);
 void				handle_other2(t_parameters *parameters);
 void				handle_other3(t_parameters *parameters);
-void				handle_other4(t_parameters *parameters);
+void				handle_nova(t_parameters *parameters);
 void				handle_other5(t_parameters *parameters);
 void				handle_other6(t_parameters *parameters);
+int					if_julia_and_others(t_parameters *parameters);
 
 #endif
