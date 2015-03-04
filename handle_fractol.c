@@ -58,8 +58,8 @@ void	handle_fractol(t_parameters *parameters)
 		handle_other3(parameters);
 	if (parameters->fractype == NOVA)
 		handle_nova(parameters);
-	if (parameters->fractype == OTHER5)
+	if (parameters->fractype == OTHER4)
 		handle_other5(parameters);
-	if (parameters->fractype == OTHER6)
+	if (parameters->fractype == OTHER5)
 		handle_other6(parameters);
 }

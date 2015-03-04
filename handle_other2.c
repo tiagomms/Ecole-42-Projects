@@ -26,7 +26,8 @@ void	do_other2(t_parameters *parameters, int col, int line)
 	iteration = 0;
 	while (iteration < parameters->info->max_iterations)
 	{
-		xtemp = (x * x * x) - (3 * x * y * y) - x - 1 + parameters->info->current_point[0];
+		xtemp = (x * x * x) - (3 * x * y * y) - x - 1 +
+		parameters->info->current_point[0];
 		y = (3 * x * x * y) - (y * y * y) - y + y0;
 		x = xtemp;
 		if (((x * x) + (y * y)) > (2 * 2))

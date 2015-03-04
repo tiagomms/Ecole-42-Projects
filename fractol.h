@@ -24,7 +24,7 @@ typedef char		t_bool;
 
 typedef enum		e_fractype
 {
-	JULIA, MANDELBROT, BURNING, OTHER1, OTHER2, OTHER3, NOVA, OTHER5, OTHER6
+	JULIA, MANDELBROT, BURNING, OTHER1, OTHER2, OTHER3, NOVA, OTHER4, OTHER5
 }					t_fractype;
 
 typedef enum		e_palette
@@ -70,7 +70,8 @@ typedef struct		s_parameters
 }					t_parameters;
 
 void				set_screen(t_screen *screen);
-void				set_info(t_info *info, t_screen *screen, t_parameters *parameters);
+void				set_info(t_info *info, t_screen *screen,
+					t_parameters *parameters);
 int					custom_atoi(const char *str);
 int					mouse_hook(int button, int x, int y,
 					t_parameters *parameters);
@@ -97,5 +98,15 @@ void				handle_nova(t_parameters *parameters);
 void				handle_other5(t_parameters *parameters);
 void				handle_other6(t_parameters *parameters);
 int					if_julia_and_others(t_parameters *parameters);
+void				print_menu(t_screen *screen);
+int					colour_in_int(int r, int g, int b);
+void				hsb_to_rgb(double current_hue, t_parameters *parameters,
+					int col, int line);
+void				changing_palettes(int keycode, t_parameters *parameters);
+void				moving_with_arrows(int keycode, t_parameters *parameters);
+void				changing_fractal(int keycode, t_parameters *parameters);
+void				changing_relaxation_const(int keycode,
+					t_parameters *parameters);
+void				print_display(t_parameters *parameters, t_screen *screen);
 
 #endif

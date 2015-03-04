@@ -19,42 +19,14 @@ void	set_screen(t_screen *screen)
 	screen->window_size[1] = 1000;
 	screen->window = mlx_new_window(screen->mlx_ptr, 1420,
 								screen->window_size[1], "Fractol");
-	screen->image_ptr = mlx_new_image(screen->mlx_ptr, screen->window_size[0] ,
+	screen->image_ptr = mlx_new_image(screen->mlx_ptr, screen->window_size[0],
 								screen->window_size[1]);
 	screen->image_data = (unsigned int*)mlx_get_data_addr(screen->image_ptr,
 							&screen->bits_per_pixel, &screen->size_line,
 							&screen->endian);
 	screen->endian = 1;
 	screen->size_line /= 4;
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 100, 0xFFFFFF,"Menu of Options:");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 120, 0xFFFFFF,"Mouse click    change central point");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 140, 0xFFFFFF,"Scroll wheel   zoom in/out");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 160, 0xFFFFFF,"b              palette - black/white");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 180, 0xFFFFFF,"m              palette - fixed green");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 200, 0xFFFFFF,"n              palette - varied");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 220, 0xFFFFFF,"q              increase hue");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 240, 0xFFFFFF,"w              decrease hue");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 260, 0xFFFFFF,"l              julia - activate lock");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 280, 0xFFFFFF,"u              julia - deactivate lock");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 300, 0xFFFFFF,"up arrow       move central point up");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 320, 0xFFFFFF,"down arrow     move central point down");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 340, 0xFFFFFF,"left arrow     move central point left");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 360, 0xFFFFFF,"right arrow    move central point right");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 380, 0xFFFFFF,"r              reset current fractal");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 400, 0xFFFFFF,"ESC key        quit");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 500, 0xFFFFFF,"Fractol options");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 520, 0xFFFFFF,"1              julia");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 540, 0xFFFFFF,"2              mandelbrot");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 560, 0xFFFFFF,"3              burning");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 580, 0xFFFFFF,"4              other1");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 600, 0xFFFFFF,"5              other2");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 620, 0xFFFFFF,"6              other3");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 640, 0xFFFFFF,"7              nova");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 660, 0xFFFFFF,"8              other4");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 680, 0xFFFFFF,"9              other5");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 780, 0xFFFFFF,"In NOVA:");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 800, 0xFFFFFF,"z              increase R (until 6)");
-	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 820, 0xFFFFFF,"x              decrease R (until 1)");
+	print_menu(screen);
 }
 
 void	set_new_info(t_info *info, t_screen *screen)

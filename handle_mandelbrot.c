@@ -48,8 +48,10 @@ void	handle_mandelbrot(t_parameters *parameters)
 		col = 0;
 		while (col < parameters->screen->window_size[1])
 		{
-			parameters->info->current_point[0] = get_current_x0(parameters, col);
-			parameters->info->current_point[1] = get_current_y0(parameters, line);
+			parameters->info->current_point[0] =
+			get_current_x0(parameters, col);
+			parameters->info->current_point[1] =
+			get_current_y0(parameters, line);
 			do_mandelbrot(parameters, col, line);
 			col++;
 		}

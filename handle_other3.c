@@ -28,7 +28,8 @@ void	do_other3(t_parameters *parameters, int col, int line)
 	{
 		xtemp = parameters->info->current_point[0] + ((x * x - y * y) *
 				(1 + (1 / (10 * ((x * x + y * y) * (x * x + y * y))))));
-		y = (2 * x * y) - ((x * y) / (5 * (x * x + y * y) * (x * x + y * y))) + y0;
+		y = (2 * x * y) - ((x * y) / (5 * (x * x + y * y) * (x * x + y * y)))
+		+ y0;
 		x = xtemp;
 		if (((x * x) + (y * y)) > (2 * 2))
 			break ;

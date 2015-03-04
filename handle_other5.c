@@ -14,13 +14,11 @@
 
 void	do_other5(t_parameters *parameters, int col, int line)
 {
-	double	y0;
 	double	x;
 	double	y;
 	double	xtemp;
 	int		iteration;
 
-	y0 = parameters->info->current_point[1];
 	x = get_current_x0(parameters, col);
 	y = get_current_y0(parameters, line);
 	iteration = 0;

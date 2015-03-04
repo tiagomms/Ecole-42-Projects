@@ -13,7 +13,7 @@
 NAME =			fractol
 
 CC =			gcc
-FLAGS =			-O3 
+FLAGS =			-Wall -Wextra -Werror -O3 -g
 LIBFT =			"libft/"
 X11 =			"/usr/X11/lib"
 
@@ -35,6 +35,10 @@ COMPILED =		main.o\
 				handle_nova.o\
 				handle_other5.o\
 				handle_other6.o\
+				print_menu.o\
+				hsb_colour_conversion.o\
+				hook_changes.o\
+				print_display.o\
 
 all: $(NAME)
 
