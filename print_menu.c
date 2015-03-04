@@ -50,6 +50,16 @@ static void	continue_print_menu(t_screen *screen)
 					"r              reset current fractal");
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 440, 0xFFFFFF,
 					"ESC key        quit");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 820, 0xFFFFFF,
+		"Current Fractol Info");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 840, 0xFFFFFF,
+		"Fractol:");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 860, 0xFFFFFF,
+		"Central Point - x:");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 880, 0xFFFFFF,
+		"Central Point - y:");
+	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 900, 0xFFFFFF,
+		"Focus:");
 	continue_continuing_print_menu(screen);
 }
 

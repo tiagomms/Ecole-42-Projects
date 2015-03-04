@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol.h"//Makefile -g
 
 void	mlx(t_fractype fractype, t_info *info)
 {
