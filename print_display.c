@@ -60,8 +60,11 @@ char	*ft_ftoa(double n, int precision)
 		rest *= 10;
 		i++;
 	}
-	str_number = ft_strjoin(str_number,
-		ft_itoa_uintmax((uintmax_t)floor(rest)));
+	if ((((uintmax_t)floor(rest * 10)) % 10) > 5)
+		rest = ceil(rest);
+	else
+		rest = floor(rest);
+	str_number = ft_strjoin(str_number, ft_itoa_uintmax((uintmax_t)rest));
 	if (n < 0)
 		str_number = ft_strjoin("-", str_number);
 	else

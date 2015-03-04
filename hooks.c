@@ -93,7 +93,7 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 	else if ((button == 4 || button == 5) && rolling == 0)
 	{
 		rolling = 1;
-		if (button == 5 && (parameters->info->initial_axis_length / parameters->info->zoom) > 0.000000000001f)
+		if (button == 5 && (parameters->info->initial_axis_length / (parameters->info->zoom * 1.05)) > 0.000000000001f)
 			parameters->info->zoom *= 1.05f;
 		else if (button == 4 && parameters->info->zoom > 1)
 			parameters->info->zoom /= 1.05f;
