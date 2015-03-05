@@ -6,7 +6,7 @@
 #    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 17:52:57 by tfleming          #+#    #+#              #
-#    Updated: 2015/03/02 16:49:12 by mbooth           ###   ########.fr        #
+#    Updated: 2015/03/05 14:44:09 by mbooth           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -39,6 +39,7 @@ COMPILED =		main.o\
 				hsb_colour_conversion.o\
 				hook_changes.o\
 				print_display.o\
+				ftoa.o\
 
 all: $(NAME)
 
