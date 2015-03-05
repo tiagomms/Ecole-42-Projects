@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+         #
+#    By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/11/18 03:16:59 by mbooth            #+#    #+#              #
-#    Updated: 2015/01/08 11:57:46 by mbooth           ###   ########.fr        #
+#    Created: 2014/11/18 03:16:59 by tsilva            #+#    #+#              #
+#    Updated: 2015/01/08 11:57:46 by tsilva           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=gcc
-CFLAGS=-I includes/ -Wall -Werror -Wextra
+CFLAGS=-I includes/ -Wall -Werror -Wextra -O3
 NAME=libft.a
 SRC=ft_list_size.c\
 	ft_list_reverse.c\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/26 10:57:38 by mbooth            #+#    #+#             */
-/*   Updated: 2015/03/05 14:49:20 by mbooth           ###   ########.fr       */
+/*   Created: 2015/02/26 10:57:38 by tsilva            #+#    #+#             */
+/*   Updated: 2015/03/05 14:49:20 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,12 @@ int		mouse_motion_hook(int x, int y, t_parameters *parameters)
 
 int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 {
-	static int rolling = 0;
+	static int	rolling = 0;
 
 	if (if_julia_and_others(parameters) && !parameters->lock_activated)
 		return (0);
 	if (button == 1 || button == 3)
-	{
 		change_central_point(parameters, x, y);
-		parameters->update = 1;
-	}
 	else if ((button == 4 || button == 5) && rolling == 0)
 	{
 		rolling = 1;
@@ -94,10 +91,9 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 			parameters->info->zoom *= 1.05f;
 		else if (button == 4 && parameters->info->zoom > 1)
 			parameters->info->zoom /= 1.05f;
-		if (parameters->info->zoom <= 1)
-			set_info(parameters->info, parameters->screen, parameters);
-		else
-			set_new_info(parameters->info, parameters->screen);
+		if (parameters->info->zoom < 1)
+			parameters->info->zoom = 1;
+		set_new_info(parameters->info, parameters->screen);
 		parameters->update = 1;
 		rolling = 0;
 	}

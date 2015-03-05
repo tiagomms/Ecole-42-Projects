@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/26 21:57:01 by mbooth            #+#    #+#             */
-/*   Updated: 2014/12/05 16:16:07 by mbooth           ###   ########.fr       */
+/*   Created: 2014/11/26 21:57:01 by tsilva            #+#    #+#             */
+/*   Updated: 2014/12/05 16:16:07 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		check_leftover(char **leftover, char **line)
 	char	*buff;
 
 	i = 0;
+	length = 0;
 	if (leftover[0])
 		length = ft_strlen(leftover[0]);
 	while (i < length && leftover[0])

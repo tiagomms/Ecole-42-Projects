@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/25 17:54:11 by mbooth            #+#    #+#             */
-/*   Updated: 2015/03/05 14:52:05 by mbooth           ###   ########.fr       */
+/*   Created: 2015/02/25 17:54:11 by tsilva            #+#    #+#             */
+/*   Updated: 2015/03/05 14:52:05 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	change_central_point(t_parameters *parameters, int x, int y)
 	parameters->info->central_point[0] = get_current_x0(parameters, x);
 	parameters->info->central_point[1] = get_current_y0(parameters, y);
 	set_new_info(parameters->info, parameters->screen);
+	parameters->update = 1;
 }
 
 void	set_screen(t_screen *screen)
