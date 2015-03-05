@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 10:23:51 by tsilva            #+#    #+#             */
-/*   Updated: 2015/03/02 16:58:06 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/03/05 20:57:43 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int				custom_atoi(const char *str)
 		str++;
 		i = ft_atoi(str);
 	}
-	if (i != 0 || i < MAX_ITER)
+	if (i <= 0 || i < MAX_ITER)
 		return (i);
 	ft_putstr_fd("Not a valid entry\n", 2);
 	exit(0);
