@@ -6,7 +6,7 @@
 /*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 10:57:38 by mbooth            #+#    #+#             */
-/*   Updated: 2015/03/02 16:59:46 by mbooth           ###   ########.fr       */
+/*   Updated: 2015/03/05 14:49:20 by mbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,7 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 		return (0);
 	if (button == 1 || button == 3)
 	{
-		parameters->info->central_point[0] = get_current_x0(parameters, x);
-		parameters->info->central_point[1] = get_current_y0(parameters, y);
-		set_new_info(parameters->info, parameters->screen);
+		change_central_point(parameters, x, y);
 		parameters->update = 1;
 	}
 	else if ((button == 4 || button == 5) && rolling == 0)
@@ -108,7 +106,7 @@ int		mouse_hook(int button, int x, int y, t_parameters *parameters)
 
 int		expose_hook(t_parameters *parameters)
 {
-	print_menu(parameters->screen);	
+	print_menu(parameters->screen);
 	handle_fractol(parameters);
 	print_display(parameters, parameters->screen);
 	mlx_put_image_to_window(parameters->screen->mlx_ptr,

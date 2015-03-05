@@ -6,7 +6,7 @@
 /*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/25 16:52:59 by mbooth            #+#    #+#             */
-/*   Updated: 2015/02/25 17:17:39 by mbooth           ###   ########.fr       */
+/*   Updated: 2015/03/05 15:05:33 by mbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,8 @@ void				changing_fractal(int keycode, t_parameters *parameters);
 void				changing_relaxation_const(int keycode,
 					t_parameters *parameters);
 void				print_display(t_parameters *parameters, t_screen *screen);
+void				change_central_point(t_parameters *parameters,
+					int x, int y);
+char				*ft_ftoa(double n, int precision);
 
 #endif

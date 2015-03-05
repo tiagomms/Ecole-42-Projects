@@ -6,11 +6,18 @@
 /*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/25 17:54:11 by mbooth            #+#    #+#             */
-/*   Updated: 2015/02/25 17:54:18 by mbooth           ###   ########.fr       */
+/*   Updated: 2015/03/05 14:52:05 by mbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	change_central_point(t_parameters *parameters, int x, int y)
+{
+	parameters->info->central_point[0] = get_current_x0(parameters, x);
+	parameters->info->central_point[1] = get_current_y0(parameters, y);
+	set_new_info(parameters->info, parameters->screen);
+}
 
 void	set_screen(t_screen *screen)
 {

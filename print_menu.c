@@ -6,7 +6,7 @@
 /*   By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 10:21:11 by mbooth            #+#    #+#             */
-/*   Updated: 2015/03/04 10:21:13 by mbooth           ###   ########.fr       */
+/*   Updated: 2015/03/05 14:47:12 by mbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	continue_print_menu(t_screen *screen)
 	continue_continuing_print_menu(screen);
 }
 
-void	print_menu(t_screen *screen)
+void		print_menu(t_screen *screen)
 {
 	mlx_string_put(screen->mlx_ptr, screen->window, 1100, 100, 0xFFFFFF,
 					"Menu of Options:");
