@@ -13,7 +13,7 @@
 NAME =			fractol
 
 CC =			gcc
-FLAGS =			-Wall -Wextra -Werror -O3 -g
+FLAGS =			-Wall -Wextra -Werror -O3
 LIBFT =			"libft/"
 X11 =			"/usr/X11/lib"
 

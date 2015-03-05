@@ -16,7 +16,6 @@
 # include "libft/libft.h"
 # include <mlx.h>
 # include <math.h>
-# include <stdio.h>//
 
 # define MAX_ITER	500
 
@@ -75,7 +74,7 @@ void				set_info(t_info *info, t_screen *screen,
 int					custom_atoi(const char *str);
 int					mouse_hook(int button, int x, int y,
 					t_parameters *parameters);
-int 				key_hook(int keycode, t_parameters *parameters);
+int					key_hook(int keycode, t_parameters *parameters);
 int					expose_hook(t_parameters *parameters);
 double				get_current_x0(t_parameters *parameters, int col);
 double				get_current_y0(t_parameters *parameters, int line);
