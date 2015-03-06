@@ -2,7 +2,8 @@
 
 To run fractol (only works with minilibx library installed):
 make Makefile (by doing make)
-after write:
+
+After write:
 
 ./fractol (Fractal name) (Number of iterations)
 
@@ -18,3 +19,5 @@ other4
 other5
 
 Number of iterations - 0 to infinity
+
+It displays the picked fractal. A menu was written inside the window.
