@@ -1,0 +1,9 @@
+<- FlankLaser ------------------------------------------------------------------
+The FlankLaser trait allows for Ships to use the FlankLaser weapon.
+In the future, this will be put under an umbrella class of Weapon.
+
+get_range returns the range given a specified dice throw
+
+type allows clients to fire the gun and get what it hit.
+
+----------------------------------------------------------------- FlankLaser ->

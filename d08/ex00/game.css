@@ -1,0 +1,36 @@
+table{
+	border-collapse: collapse;
+}
+
+tr {
+	
+	max-height: 8px;
+
+}
+
+td {
+	width: 8px;
+	height: 8px; /* I don't know why it's 10... */
+	border: 1px solid black;
+}
+
+td img {
+	position: relative;
+	width: 100%;
+	padding: 0px;
+	border: 0px;
+	margin: auto;
+}
+
+.a {
+	/*background-image: "images/scout.png";*/
+	background-color: red;
+}
+
+.b {
+	background-color: green;
+}
+
+.obstacle {
+	background-color: black;
+}

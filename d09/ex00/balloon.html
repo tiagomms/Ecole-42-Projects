@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript</title>
+    </head>
+    <body>
+        <div id="balloon" style="width: 200px; height: 200px; background: red;  border-radius: 420px;">
+        </div>
+        <script>
+            var width = 200;                
+            var balloon_id = document.getElementById('balloon');
+            balloon_id.style.cursor = 'pointer';
+            var colors = ['red', 'green', 'blue'];
+            var i = 0;
+
+            var setRadius = function() {
+                if (width < 200 || width > 420)
+                    width = 200;
+                balloon_id.style.width = width + "px";
+                balloon_id.style.height = width + "px";
+            }
+
+            var setColor = function () {
+                if (i < 0)
+                    i = 2;
+                else if (i > 2)
+                    i = 0;
+                balloon_id.style.backgroundColor = colors[i];
+            }
+            
+            balloon_id.onclick = function() {
+                width += 10;
+                i += 1;
+                setRadius();
+                setColor();
+            }
+
+            balloon_id.addEventListener("mouseleave", function() {
+                width -= 5;
+                i -= 1;
+                setRadius();
+                setColor();
+            });
+        </script>
+    </body>
+<html>
