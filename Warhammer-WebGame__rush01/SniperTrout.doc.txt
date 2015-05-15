@@ -1,0 +1,12 @@
+<- SniperTrout ----------------------------------------------------------------------
+
+This object represents a trout armed to the gills - specifically, with a sniper.
+
+The constructor takes x, y, and a name (text);
+
+The fight function makes it fire. It takes a dice roll, width, area, positions
+, and directions, also an arena.
+
+It has a __toString method, duhh.
+
+---------------------------------------------------------------------- SniperTrout ->

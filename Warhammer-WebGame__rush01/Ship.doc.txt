@@ -1,0 +1,26 @@
+<- Ship ----------------------------------------------------------------------
+The Ship represents the field in whizh ships move.
+
+The privates properties of the ship are as follow: name, max_health, health,
+default_shield, shield, speed, agility, width, height.
+
+Its constructor function uses its parent class's one (OnScreen class), but
+needs other keys in the kwarray, which are the private propertie described on
+top.
+
+The beginningOfTurn() method sets the shield property to the default_shield
+at the beginning of the game.
+
+It also has a function isInLimits to check if it is still in the scope of the
+arena. If it goes out, the ship is destroyed.
+
+The shipIsShot decrements the health property and then destroys the ship if
+it goes under 0.
+
+The move method changes the position_x and the position_y properties.
+
+The getName(), getHealth(), getShiel(), getSpeed(), getAgility(), getWidth()
+and getHeight() properties return the matching properties.
+
+
+---------------------------------------------------------------------- Ship ->
