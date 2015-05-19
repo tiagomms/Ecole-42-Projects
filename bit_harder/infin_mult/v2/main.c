@@ -6,7 +6,7 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 11:46:12 by exam              #+#    #+#             */
-/*   Updated: 2015/05/19 16:17:30 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/05/19 16:59:26 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,18 @@ void	remove_initial_zeros(char **strptr)
 	*strptr = str;
 }
 
-void	get_rest_of_new_value(char *new_value, int prev_result)
+void	get_rest_of_new_value(char **new_value_ptr, int prev_result)
 {
-	if (prev_result == 10)
-	{
-		new_value--;
-		*new_value = '0';
-		new_value--;
-		*new_value = prev_result / 10 + '0';
-		prev_result /= 10;
-	}
-	else if (prev_result / 10 != 0)
+	char *new_value;
+
+	new_value = *new_value_ptr;
+	if (prev_result / 10 != 0)
 	{
 		new_value--;
 		*new_value = prev_result / 10 + '0';
 		prev_result /= 10;
 	}
+	*new_value_ptr = new_value;
 }
 
 void	add_new_value_to_result(char *new_value, char **result_ptr, int pos2)
@@ -148,7 +144,7 @@ char 	*infin_mult(char *n1, char *n2)
 			ft_mult(getdigit(n1, pos1), getdigit(n2, pos2), &prev_result, new_value);
 			pos1--;
 		}
-		get_rest_of_new_value(new_value, prev_result);
+		get_rest_of_new_value(&new_value, prev_result);
 		add_new_value_to_result(new_value, &result, ft_strlen(n2) - 1 - pos2);
 		pos2--;
 	}
