@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 17:22:39 by tsilva            #+#    #+#             */
-/*   Updated: 2015/05/19 19:57:33 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/05/19 20:02:18 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,6 @@ t_bool	is_neg(char *n)
 	return (n[0] == '-');
 }
 
-void	insert_digit(int digit, char **final_nbr_ptr)
-{
-	char *final_nbr;
-
-	final_nbr = *final_nbr_ptr;
-	final_nbr--;
-	*final_nbr = digit + '0';
-	*final_nbr_ptr = final_nbr;
-}
-
 int		ft_add(int a, int b)
 {
 	return (a + b);
@@ -59,9 +49,14 @@ int		ft_sub(int a, int b)
 	return (a - b);
 }
 
-t_bool	is_add_the_op(char *n1, char *n2)
+void	insert_digit(int digit, char **final_nbr_ptr)
 {
-	return (((!is_neg(n1) && !is_neg(n2)) || (is_neg(n1) && is_neg(n2))));
+	char *final_nbr;
+
+	final_nbr = *final_nbr_ptr;
+	final_nbr--;
+	*final_nbr = digit + '0';
+	*final_nbr_ptr = final_nbr;
 }
 
 int		get_digit(char *n, int pos)
@@ -69,6 +64,11 @@ int		get_digit(char *n, int pos)
 	if (pos < 0 || n[pos] == '-')
 		return (0);
 	return (n[pos] - '0');
+}
+
+t_bool	is_add_the_op(char *n1, char *n2)
+{
+	return (((!is_neg(n1) && !is_neg(n2)) || (is_neg(n1) && is_neg(n2))));
 }
 
 t_bool	is_n2_bigger_nbr(char *n1, char *n2)
