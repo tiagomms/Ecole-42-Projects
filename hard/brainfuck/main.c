@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 17:39:22 by tsilva            #+#    #+#             */
-/*   Updated: 2015/05/05 19:46:29 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/05/19 20:11:31 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int	main(int argc, char **argv)
 		i = 0;
 		op = 0;
 		pos = 0;
-		ft_bzero((void*)buf, BUF_SIZE);
+		ft_bzero((void*)buf, BUF_SIZE + 1);
 		while (argv[1][i] && op < MAX_OPS)
 		{
 			interpreter(argv[1], &i, &pos, (char*)buf);
