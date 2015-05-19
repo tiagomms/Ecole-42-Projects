@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 21:17:25 by tsilva            #+#    #+#             */
-/*   Updated: 2015/05/05 22:20:06 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/05/19 20:16:01 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	**set_initial_strptr(char *str, size_t len)
 			i += ft_strlen(&str[i]);
 		}
 	}
-	array_of_ptrs[word++] = NULL;
+	array_of_ptrs[word] = NULL;
 	return (array_of_ptrs);
 }
 
