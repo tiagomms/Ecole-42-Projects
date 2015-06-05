@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 18:25:32 by tsilva            #+#    #+#             */
-/*   Updated: 2015/06/04 18:46:45 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/06/05 21:37:06 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <iostream>
 #include <string>
+#include <regex>
+#include <stdlib.h>
+#include <string.h>
 #include <algorithm>//?
 #include <vector>//?
 using namespace std;
@@ -28,7 +31,6 @@ inline SomeType ft_abs(SomeType n)
 {
 	return (n < 0 ? -n : n);
 }
-
 
 /*
  * struct Usages is the holding public class for the bonuses made:
