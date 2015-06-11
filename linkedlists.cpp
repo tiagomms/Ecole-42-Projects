@@ -12,7 +12,7 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:12:13 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/04 18:47:00 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/11 17:19:46 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
@@ -32,6 +32,7 @@ LinkedList::LinkedList()
 	length = 0;
 	degree = 0;
 }
+
 
 // De-allocates list memory when the program terminates.
 LinkedList::~LinkedList()
@@ -176,7 +177,7 @@ LinkedList& LinkedList::operator -= (const LinkedList& secondList)
 }
 
 
-/*  REMOVE
+//  REMOVE
 	
 // Displays list contents to the console window.
 void LinkedList::printList()
@@ -209,7 +210,7 @@ void LinkedList::printList()
 	cout << "}n";
 	cout << "\n";
 }
-*/
+
 
 //*****************************************************************
 // Printing Equation Formula Eqautions

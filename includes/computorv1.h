@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 18:25:32 by tsilva            #+#    #+#             */
-/*   Updated: 2015/06/05 21:37:06 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/06/11 17:19:54 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ struct	Coefficient {
 	Coefficient *	next;
 
 	//Original constructor
-	Coefficient() {}
+	Coefficient() : next(NULL) { }
 	
 	//overload constructor in case I have a value and key to store
 	Coefficient(int x, double y) : key(x) , value(y), next(NULL) { } 
