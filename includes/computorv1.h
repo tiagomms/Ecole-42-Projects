@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 18:25:32 by tsilva            #+#    #+#             */
-/*   Updated: 2015/06/11 17:19:54 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/06/11 17:53:05 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,5 +155,9 @@ public:
 	Coefficient * lastCoef();	
 	bool validComputorV();
 };
+
+string	delete_spaces_from_equation(char *equation);
+void	getCoefs_from_equation(string &equation, LinkedList *list1,
+							   LinkedList *list2);
 
 #endif

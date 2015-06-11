@@ -12,7 +12,7 @@
 //                                                +#+           //
 //   Created: 2015/06/04 18:55:40 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/11 17:19:07 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/11 17:52:15 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
@@ -132,7 +132,7 @@ void	getCoefs_from_equation(string &equation, LinkedList *list1, LinkedList *lis
 		part_of_equation = strtok(NULL, "=");
 	delete[] copy_equation;
 }
-
+/*
 int main(int argc, char **argv)
 {
 	string equation;
@@ -143,7 +143,7 @@ int main(int argc, char **argv)
 	{	
 		list1 = new LinkedList();
 		list2 = new LinkedList();
-		cout << argv[1] << endl;
+		cout << argv[1] << endl;//
 		equation = delete_spaces_from_equation(argv[1]);
 		cout << equation << endl << endl;		
 		getCoefs_from_equation(equation, list1, list2);
@@ -155,3 +155,4 @@ int main(int argc, char **argv)
 	}
 	return 0;
 }
+*/

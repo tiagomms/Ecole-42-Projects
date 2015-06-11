@@ -12,7 +12,7 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:12:01 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/11 10:55:35 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/11 18:01:32 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
@@ -56,15 +56,17 @@ void	Coefficient::printCoefficient(const Usages& usage)
 {
 	if (value != 0)
 	{
-		cout << ft_abs<double>(value);
 		if (usage.natural_display__n)
 		{
-			cout << (key == 0 ? "" : " * X");
+			if (ft_abs<double>(value) != 1)
+				cout << ft_abs<double>(value) << " * ";
+			cout << (key == 0 ? "" : "X");
 			if (key > 1)
 				cout << "^" << key;
 		}
 		else
 		{
+			cout << ft_abs<double>(value);
 			cout << " * X^" << key;
 		}
 	}
