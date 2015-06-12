@@ -12,17 +12,12 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:12:13 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/11 17:19:46 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/12 19:39:40 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 #include "./includes/computorv1.h"
-
-/*
- * code adapted from:
- *    http://pumpkinprogrammer.com/2014/06/21/c-tutorial-intro-to-hash-tables/
-*/
 
 // Constructs the empty linked list object.
 // Creates the head node and sets length to zero.
@@ -84,14 +79,13 @@ Coefficient * LinkedList::getCoef( int coefDegree )
 	return NULL;
 }
 
-
 //*****************************************************************
 // Insert, Remove Coefficients
 //*****************************************************************
 
 // Inserts an Coefficient at the end of the list. If
 // coefficients have the same key, they are added to each other
-void LinkedList::insertCoef( Coefficient * newCoef )
+void LinkedList::insertCoef( Coefficient * newCoef , bool is2join_coefs)
 {
 	Coefficient * p;
 	Coefficient * q;
@@ -101,7 +95,6 @@ void LinkedList::insertCoef( Coefficient * newCoef )
 		return ;
 	cloneCoef = new Coefficient;
 	*cloneCoef = *newCoef;
-	cloneCoef -> next = NULL;
 	if (!head -> next)
 	{
 		head -> next = cloneCoef;
@@ -113,7 +106,7 @@ void LinkedList::insertCoef( Coefficient * newCoef )
 	while (q)
 	{
 		p = q;
-		if ((p != head) && (newCoef -> key == p -> key))
+		if ((p != head) && (newCoef -> key == p -> key) && is2join_coefs)
 		{
 			*p += *newCoef;
 			return;
@@ -168,7 +161,7 @@ LinkedList& LinkedList::operator -= (const LinkedList& secondList)
 		if (p != head && p->key != 0)
 		{
 			p->value *= -1;
-			this->insertCoef(p);
+			this->insertCoef(p, true);
 			p->value = 0;
 		}
 		p = p->next;
@@ -176,9 +169,7 @@ LinkedList& LinkedList::operator -= (const LinkedList& secondList)
 	return *this;
 }
 
-
-//  REMOVE
-	
+//  REMOVE	
 // Displays list contents to the console window.
 void LinkedList::printList()
 {
@@ -286,7 +277,8 @@ const LinkedList& LinkedList::sort_List()
 	return *this;
 }
 
-LinkedList&	LinkedList::endingJoiningLists(const LinkedList &secondList)
+LinkedList&	LinkedList::endingJoiningLists(const LinkedList &secondList,
+										   const Usages& usage)
 {
 	Coefficient *lst1;
 	Coefficient *lst2;
@@ -300,7 +292,11 @@ LinkedList&	LinkedList::endingJoiningLists(const LinkedList &secondList)
 	{
 		value1 = (!lst1 ? 0 : lst1->value);
 		value2 = (!lst2 ? 0 : lst2->value);
-		cout << "Reduced Form: " << value1 << " = " << value2 << endl;
+		cout << "Reduced Form: ";
+		lst1->printCoefficient(usage);
+		cout << " = ";
+		lst2->printCoefficient(usage);
+		cout << endl;
 		printDegree();
 		if (value1 == value2)
 			cout << "All real numbers are solution\n";
@@ -311,12 +307,11 @@ LinkedList&	LinkedList::endingJoiningLists(const LinkedList &secondList)
 	if (lst2)
 	{
 		lst2->value *= -1;
-		this->insertCoef(lst2);
+		this->insertCoef(lst2, true);
 		lst2->value = 0;
 	}
 	return *this;
 }
-
 
 //*****************************************************************
 // Verify it is a valid equation to calculate

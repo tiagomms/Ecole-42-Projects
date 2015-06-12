@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 18:25:32 by tsilva            #+#    #+#             */
-/*   Updated: 2015/06/11 17:53:05 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/06/12 19:40:56 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include <iostream>
 #include <string>
 #include <regex>
+#include <cmath>
+#include <complex>
 #include <stdlib.h>
 #include <string.h>
-#include <algorithm>//?
-#include <vector>//?
 using namespace std;
 
 /*
@@ -30,6 +30,12 @@ template <class SomeType>
 inline SomeType ft_abs(SomeType n)
 {
 	return (n < 0 ? -n : n);
+}
+
+template <class NbrType>
+inline bool is_integer(NbrType k)
+{
+	return floor(k) == k;
 }
 
 /*
@@ -45,9 +51,6 @@ inline SomeType ft_abs(SomeType n)
 
 struct Usages {
 	static bool natural_display__n;
-	static bool equation_graph__g;
-	static bool degree_colors__c;
-	static bool interm_steps__i;
 
 	//set based on input what usages are being applied
 	void set_usage(char *arg);
@@ -57,17 +60,7 @@ struct Usages {
 		cout << "Invalid usage:  " << arg << '\n';
 		exit(1);
 	}
-
-	void print_usages() { //to be removed
-		cout << "Usages activated:\n";
-		cout << "-n: " << natural_display__n << '\n';
-		cout << "-g: " << equation_graph__g << '\n';
-		cout << "-c: " << degree_colors__c << '\n';
-		cout << "-i: " << interm_steps__i << '\n';		
-		cout << '\n';
-	}
 };
-
 
 /*
  * Coefficient - holds the coefficient value (value --> double)
@@ -135,7 +128,7 @@ public:
 	Coefficient * getCoef( int coefDegree );
 
 	//insert , remove Coefficients
-	void insertCoef( Coefficient * newCoef );
+	void insertCoef( Coefficient * newCoef , bool is2join_coefs);
 	bool removeNullCoefs();
 
 	//Overload operator functions
@@ -147,8 +140,8 @@ public:
 	void printDegree();
 	void printReducedForm(const Usages &);
 
-	//functions to validate ComputerV1
-	LinkedList&	endingJoiningLists(const LinkedList &);
+	//final details to make equation valid for ComputorV1
+	LinkedList&	endingJoiningLists(const LinkedList &, const Usages &);
 	const LinkedList& sort_List();
 
 	//Verify it is a valid equation to calculate
@@ -159,5 +152,8 @@ public:
 string	delete_spaces_from_equation(char *equation);
 void	getCoefs_from_equation(string &equation, LinkedList *list1,
 							   LinkedList *list2);
-
+void	getSolutions(LinkedList *list1, LinkedList *list2);
+void	printIrreducibleFractions_1stDegree(double c, double b);
+void	printIrreducibleFractions_2ndDegree(double a, double b, double c,
+											complex<double> sqrt_discriminant);
 #endif

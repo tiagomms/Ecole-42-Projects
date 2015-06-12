@@ -12,7 +12,7 @@
 //                                                +#+           //
 //   Created: 2015/06/04 18:55:40 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/11 17:52:15 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/12 12:46:12 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
@@ -100,7 +100,7 @@ void	getCoefs_from_equation(string &equation, LinkedList *list1, LinkedList *lis
 			degree = 0;
 		if (regex_search(coefs->str().c_str(), match_exponential, exponential_pattern))
 			degree *= atoi((match_exponential[1]).str().c_str());
-		list1->insertCoef(new Coefficient(degree, coef));
+		list1->insertCoef(new Coefficient(degree, coef), true);
 		coefs++;
 	}
 
@@ -124,7 +124,7 @@ void	getCoefs_from_equation(string &equation, LinkedList *list1, LinkedList *lis
 			degree = 0;
 		if (regex_search(coefs2->str().c_str(), match_exponential, exponential_pattern))
 			degree *= atoi((match_exponential[1]).str().c_str());
-		list2->insertCoef(new Coefficient(degree, coef));
+		list2->insertCoef(new Coefficient(degree, coef), true);
 		coefs2++;
 	}
 	
