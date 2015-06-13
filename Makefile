@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbooth <mbooth@student.42.fr>              +#+  +:+       +#+         #
+#    By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/02/24 17:06:05 by mbooth            #+#    #+#              #
-#    Updated: 2015/06/13 14:29:06 by tsilva           ###   ########.fr        #
+#    Created: 2015/06/13 15:03:16 by tsilva            #+#    #+#              #
+#    Updated: 2015/06/13 15:47:32 by tsilva           ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME =			computor
 
@@ -17,6 +17,7 @@ FLAGS =			-Wall -Werror -Wextra
 
 INC_DIR = ./includes/
 INC_FLAGS =	-I $(INC_DIR)
+OBJ_DIR = ./objs/
 
 COMPILED =		main.o\
 				coefficients.o\
@@ -26,17 +27,23 @@ COMPILED =		main.o\
 				solutions.o\
 				usages.o\
 
-all: $(NAME)
+OBJ_FILES = $(COMPILED:%=$(OBJ_DIR)%)
+
+all: $(OBJ_DIR) $(NAME)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 $(NAME): $(COMPILED)
-	@$(CC) $(FLAGS) -o $(NAME) $(COMPILED) 
+	@$(CC) $(FLAGS) -o $(NAME) $(OBJ_FILES) 
 	@echo "made" $(NAME)
 
 $(COMPILED): %.o: %.cpp
-	@$(CC) -c $(FLAGS) $(INC_FLAGS) -o $@ $<
+	@$(CC) -c $(FLAGS) $(INC_FLAGS) -o $(OBJ_DIR)$@ $<
 
 clean:
-	@-/bin/rm -f $(COMPILED)
+	@-/bin/rm -f $(OBJ_FILES)
+	@-/bin/rm -rf $(OBJ_DIR)
 	@echo "cleaned" $(NAME)
 
 fclean: clean
