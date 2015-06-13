@@ -12,13 +12,12 @@
 //                                                +#+           //
 //   Created: 2015/06/04 18:55:40 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/13 11:26:13 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 12:03:21 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.h"
-#include <stdio.h>
+#include "./includes/computorv1.hpp"
 
 // replace spaces for nothing in the equation
 string	delete_spaces_from_equation(char *equation)

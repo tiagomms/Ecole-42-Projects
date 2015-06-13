@@ -17,7 +17,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.h"
+#include "./includes/computorv1.hpp"
 
 //print Discriminant answer expected
 static void	printDiscriminant(complex<double> discriminant)

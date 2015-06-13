@@ -17,7 +17,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.h"
+#include "./includes/computorv1.hpp"
 
 //overload operator to only add value, and not key
 const Coefficient& Coefficient::operator+= (const Coefficient& second_coef) {

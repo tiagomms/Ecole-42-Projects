@@ -17,7 +17,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.h"
+#include "./includes/computorv1.hpp"
 
 void	do_computorv1(Usages &usage, char *equation_passed)
 {

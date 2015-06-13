@@ -17,7 +17,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.h"
+#include "./includes/computorv1.hpp"
 
 // Constructs the empty linked list object.
 // Creates the head node and sets length to zero.
