@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 18:25:32 by tsilva            #+#    #+#             */
-/*   Updated: 2015/06/12 19:40:56 by tsilva           ###   ########.fr       */
+/*   Updated: 2015/06/13 10:05:57 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ public:
 string	delete_spaces_from_equation(char *equation);
 void	getCoefs_from_equation(string &equation, LinkedList *list1,
 							   LinkedList *list2);
-void	getSolutions(LinkedList *list1, LinkedList *list2);
+void	getSolutions(LinkedList &list1);
 void	printIrreducibleFractions_1stDegree(double c, double b);
-void	printIrreducibleFractions_2ndDegree(double a, double b, double c,
+void	printIrreducibleFractions_2ndDegree(double a, double b,
 											complex<double> sqrt_discriminant);
 #endif

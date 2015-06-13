@@ -12,14 +12,13 @@
 //                                                +#+           //
 //   Created: 2015/06/04 18:30:17 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/12 19:31:16 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 11:19:59 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 #include "./includes/computorv1.h"
 
-//this is how static members are implemented
 bool	Usages::natural_display__n = 0; 
 
 void	Usages::set_usage(char *arg)

@@ -12,7 +12,7 @@
 //                                                +#+           //
 //   Created: 2015/06/04 18:55:40 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/12 12:46:12 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 11:26:13 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
@@ -31,14 +31,16 @@ string	delete_spaces_from_equation(char *equation)
 }
 
 /*
- * goal: divide 2 parts of the equation in 2 Lists.
- * To do it I use regex written below (either has a coefficient
- * written or not).
+ * goal: divide 2 parts of the equation in 2 Lists of coefficients.
+ * To do it I use regex written below, to collect the Coefficients
+ * Coefficients can be written in two ways:
+ * 	-> a (* X(^N)?)?, a is real
+ *  -> X(^N)?, N is integer
+ *
  * strtok divides the equation in 2 parts, with the delimiter "="
- * sregex_token_iterator is used to get all the parts that respect the
- * pattern. Then regex_search is used to find the part of the
- * expressions so then the coefficient degree and value can be
- * determined (real number part, times_x or just_x, exponential part).
+ * sregex_token_iterator is used to get all coefficients (that respected the
+ * pattern). Then regex_search is used to find each part individually:
+ * key and value
 */
 
 void	getCoefs_from_equation(string &equation, LinkedList *list1, LinkedList *list2)
@@ -57,14 +59,15 @@ void	getCoefs_from_equation(string &equation, LinkedList *list1, LinkedList *lis
 	string		before_equal;
 	string		after_equal;
 
-	//Understandable regex code:
+	//Set up of the regex:
 	start_pos = "(\\+|-|^)";
 	integer = "[[:digit:]]+";
 	real = "(" + start_pos + integer + "(\\." + integer + ")?)";
 	times_x = "\\*(X)";
 	just_x = "(" + start_pos + "X)";
 	exponential = "\\^([\\+|-]?" + integer + ")";
-	full_expression = "(" + real + "(" + times_x + "(" + exponential + ")" + "?" + ")" + "?" + ")" + "|" + "(" + just_x + "(" + exponential + ")" + "?" + ")";
+	full_expression = "(" + real + "(" + times_x + "(" + exponential + ")" + "?" + ")" + "?" + ")"
+		+ "|" + "(" + just_x + "(" + exponential + ")" + "?" + ")";
 
 	const regex real_pattern(real);
 	const regex times_x_pattern(times_x);
@@ -126,33 +129,8 @@ void	getCoefs_from_equation(string &equation, LinkedList *list1, LinkedList *lis
 			degree *= atoi((match_exponential[1]).str().c_str());
 		list2->insertCoef(new Coefficient(degree, coef), true);
 		coefs2++;
-	}
-	
+	}	
 	if (part_of_equation)
 		part_of_equation = strtok(NULL, "=");
 	delete[] copy_equation;
 }
-/*
-int main(int argc, char **argv)
-{
-	string equation;
-	LinkedList *list1;
-	LinkedList *list2;
-	
-	if (argc >= 2)
-	{	
-		list1 = new LinkedList();
-		list2 = new LinkedList();
-		cout << argv[1] << endl;//
-		equation = delete_spaces_from_equation(argv[1]);
-		cout << equation << endl << endl;		
-		getCoefs_from_equation(equation, list1, list2);
-		list1->printList();
-		list2->printList();
-		cout << "done" << endl;
-		//delete list1;
-		//delete list2;
-	}
-	return 0;
-}
-*/

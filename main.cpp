@@ -12,7 +12,7 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:15:08 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/12 19:46:42 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 11:27:15 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
@@ -33,13 +33,13 @@ void	do_computorv1(Usages &usage, char *equation_passed)
 	getCoefs_from_equation(equation, &list1, &list2);
 
 	// Match retrieved coefficients from both lists, and remove the
-	// null cases
+	// cases of value == 0
 	list1 -= list2;
 	list1.removeNullCoefs();
 	list2.removeNullCoefs();
 
 	//If a deterministic equation, end joining Lists, and remove the
-	//null cases.
+	//null value cases.
 	list1.endingJoiningLists(list2, usage);
 	list1.removeNullCoefs();
 	list2.removeNullCoefs();
@@ -49,9 +49,9 @@ void	do_computorv1(Usages &usage, char *equation_passed)
 	list1.printReducedForm(usage);
 	list1.printDegree();
 
-	//is it valid? Continue
+	//is it valid? Get Solutions. Not can't solve
 	if (list1.validComputorV())
-		getSolutions(&list1, &list2);
+		getSolutions(list1);
 	else if (list1.getDegree() > 2)
 		cout << "The polynomial degree is stricly greater than 2, I can't solve." << endl;
 	else

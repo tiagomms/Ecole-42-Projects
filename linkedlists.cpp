@@ -12,7 +12,7 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:12:13 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/12 19:39:40 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 10:51:34 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
@@ -293,9 +293,23 @@ LinkedList&	LinkedList::endingJoiningLists(const LinkedList &secondList,
 		value1 = (!lst1 ? 0 : lst1->value);
 		value2 = (!lst2 ? 0 : lst2->value);
 		cout << "Reduced Form: ";
-		lst1->printCoefficient(usage);
+		if (value1 != 0)
+			lst1->printCoefficient(usage);
+		else
+		{
+			cout << value1;
+			if (!usage.natural_display__n)
+				cout << " * X^0";
+		}
 		cout << " = ";
-		lst2->printCoefficient(usage);
+		if (value2 != 0)
+			lst2->printCoefficient(usage);
+		else
+		{
+			cout << value2;
+			if (!usage.natural_display__n)
+				cout << " * X^0";
+		}
 		cout << endl;
 		printDegree();
 		if (value1 == value2)

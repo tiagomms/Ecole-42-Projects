@@ -12,7 +12,7 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:12:01 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/12 19:59:15 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 11:06:08 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
@@ -64,7 +64,7 @@ void	Coefficient::printCoefficient(const Usages& usage)
 				cout << " * X";
 			else if (ft_abs<double>(value) == 1 && key != 0)
 				cout << "X";
-			if (key > 1)
+			if (key > 1 || key <= -1)
 				cout << "^" << key;
 		}
 		else
