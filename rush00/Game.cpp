@@ -132,30 +132,6 @@ AVaisseau	&	Game::getEnemy(int index) const
 	return this->_enemies[index];
 }
 
-Game & Game::operator=(Game const & src)
-{
-    this->_points = src._points;
-    this->_delay = src._delay;
-    this->_maxwidth = src._maxwidth;
-    this->_maxheight = src._maxheight;
-    this->_direction = src._direction;
-    this->_enemies = src._enemies;//?
-    
-    this->_CreateEnemyDelay = src._CreateEnemyDelay;
-    this->_time = src._time;
-    this->_enemyFleetSize = src._enemyFleetSize;
-    this->_playerFleetSize = src._playerFleetSize;
-    return *this;    
-} // Canonical
-
-
-Game::Game(Game const & src)
-{
-    *this = src;
-    return;
-} //Canonical
-
-
 void Game::movePlayer(AVaisseau  & player)
 {
 	int stepx;
@@ -221,13 +197,13 @@ void Game::movePlayer(AVaisseau  & player)
 		player.setVitesseX(player.getVitesseX() + (stepx % 2));
 		player.setVitesseY(player.getVitesseY() + (stepy % 2));
 		if (_direction=='l')
-			player.changePosition(player.getX() + player.getVitesseX() , player.getY() + player.getVitesseY());
+			player.changePosition(player.getX() + player.getVitesseX() , player.getY());
 		else if(_direction=='r')
-			player.changePosition(player.getX() + player.getVitesseX() , player.getY() + player.getVitesseY());
+			player.changePosition(player.getX() + player.getVitesseX() , player.getY());
 		else if(_direction=='u')
-			player.changePosition(player.getX() + player.getVitesseX() , player.getY() + player.getVitesseY() + player.getVitesseY());		
+			player.changePosition(player.getX() , player.getY() + player.getVitesseY());
 		else if(_direction=='d')
-			player.changePosition(player.getX() + player.getVitesseX() , player.getY() + player.getVitesseY() + player.getVitesseY());
+			player.changePosition(player.getX() , player.getY() + player.getVitesseY());
 
 		//playerCollide
 		stepx = (stepx != 0 ? (stepx < 0 ? ++stepx: --stepx) : 0);
@@ -238,7 +214,7 @@ void Game::movePlayer(AVaisseau  & player)
     {
         while(j < player.getTailleY())
         {
-            mvwprintw(stdscr, player.getY() + player.getVitesseY()+j,player.getX() + player.getVitesseX() + i ,"%c", player.getBordersChar());
+            mvwprintw(stdscr, player.getY() + player.getVitesseY()+j ,player.getX() + player.getVitesseX() + i ,"%c", player.getBordersChar());
             ++j;
         }
         j = 0;
@@ -349,46 +325,39 @@ void Game::start( WINDOW *win)
 	double    tmp;
     double    chrono;
     tmp = time(NULL);
-    while(1)
-    {
-        getmaxyx(stdscr, this->_maxheight, this->_maxwidth);
-        erase();
-        wborder(win, '|', '|',' ', ' ', '|', '|', '|', '|');
-        mvwprintw(win, this->_maxheight - 1, 1 ,"SCORE : %d", this->_points);
-        mvwprintw(win, this->_maxheight - 1, this->_maxwidth/2 ,"Life : %d", this->_player.getLives());
-        chrono = time(NULL) - tmp;
+	while(1)
+	{
+		getmaxyx(stdscr, this->_maxheight, this->_maxwidth);
+		erase();
+		wborder(win, 0, 0, 0, 0, 0, 0, 0, 0);
+		mvwprintw(win, this->_maxheight - 1, 1 ,"SCORE : %d", this->_points);
+	 	chrono = time(NULL) - tmp;
         mvwprintw(win, 0, 1 ,"TIME : %g", chrono);
-        wrefresh(win);
-        
+		wrefresh(win);
+		
+		if(playerCollide())
+		{
+			move(this->_maxheight/2, this->_maxwidth/2);
+			printw("game over");
+			break;
+		}
+		CreateEnemy();
+		/**COLOR**/
+		start_color();
 
-        CreateEnemy();
-        /**COLOR**/
-        start_color();
-        init_pair(3,COLOR_BLACK, COLOR_WHITE);        
-        wbkgd(stdscr,COLOR_PAIR(3));
+		init_pair(1,COLOR_BLUE,COLOR_BLUE);
+		attron(COLOR_PAIR(1));
+		movePlayer(this->_player);
+		attroff(COLOR_PAIR(1));
 
-        init_pair(1,COLOR_BLUE,COLOR_BLUE);
-        attron(COLOR_PAIR(1));
-        movePlayer(this->_player);
-        attroff(COLOR_PAIR(1));
-
-        init_pair(2,COLOR_RED,COLOR_RED);
-        attron(COLOR_PAIR(2));
-        moveFleet();
-        attroff(COLOR_PAIR(1));
-        if(playerCollide())
-        {
-            move(this->_maxheight/2, this->_maxwidth/2);
-            printw("game over");
-            break;
-        }        
-        if(_direction=='q')
-        {    
-            init_pair(1,COLOR_WHITE,COLOR_WHITE);
-            init_pair(2,COLOR_WHITE,COLOR_WHITE);
-            break;
-        }
-        
-        usleep(_delay);
-    }
+		init_pair(2,COLOR_RED,COLOR_RED);
+		attron(COLOR_PAIR(2));
+		moveFleet();
+		attroff(COLOR_PAIR(1));
+		
+		if(_direction=='q')
+			break;
+		
+		usleep(_delay);
+	}
 }
