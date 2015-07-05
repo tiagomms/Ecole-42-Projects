@@ -1,0 +1,23 @@
+> ./a.out                                                                                                                                                                   (master)
+Bob attacks with his crude spiked club
+Bob attacks with his some other type of club
+Jim attacks with his crude spiked club
+Jim attacks with his some other type of club
+tsilva@e2r6p15:~/Semester1/C++/Piscine/d01/ex06
+> rm -r a.out a.out.dSYM                                                                                                                                                    (master)
+tsilva@e2r6p15:~/Semester1/C++/Piscine/d01/ex06
+> ls                                                                                                                                                                        (master)
+HumanA.cpp HumanA.hpp HumanB.cpp HumanB.hpp Weapon.cpp Weapon.hpp main.cpp
+tsilva@e2r6p15:~/Semester1/C++/Piscine/d01/ex06
+> ga HumanA.cpp HumanA.hpp HumanB.cpp HumanB.hpp Weapon.cpp Weapon.hpp main.cpp                                                                                             (master)
+tsilva@e2r6p15:~/Semester1/C++/Piscine/d01/ex06
+> gcm ex06                                                                                                                                                                  (master)
+[master 14d681d] ex06
+ 7 files changed, 288 insertions(+)
+  create mode 100644 ex06/HumanA.cpp
+   create mode 100644 ex06/HumanA.hpp
+    create mode 100644 ex06/HumanB.cpp
+	 create mode 100644 ex06/HumanB.hpp
+	  create mode 100644 ex06/Weapon.cpp
+	   create mode 100644 ex06/Weapon.hpp
+	    create mode 100644 ex06/main.cpp
