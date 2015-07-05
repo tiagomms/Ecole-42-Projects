@@ -12,12 +12,12 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:15:08 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/13 11:27:15 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/30 16:52:16 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.hpp"
+#include "computorv1.hpp"
 
 void	do_computorv1(Usages &usage, char *equation_passed)
 {
@@ -62,6 +62,7 @@ int		main(int argc, char **argv)
 {
 	Usages	usage;
 	int		i;
+	string	has_equalsign;
 	
 	if (argc >= 2)
 	{
@@ -69,7 +70,13 @@ int		main(int argc, char **argv)
 		while (argv[i] && i < argc - 1)
 			usage.set_usage(argv[i++]);
 		if (argv[i])
-			do_computorv1(usage, argv[i]);
+		{
+			has_equalsign = string(argv[i]);
+			if (has_equalsign.find('=') == string::npos)
+				cerr << "Invalid equation: not = sign present" << endl;
+			else
+				do_computorv1(usage, argv[i]);
+		}
 	}
 	else
 		cerr << "Error - Equation not introduced" << endl; 

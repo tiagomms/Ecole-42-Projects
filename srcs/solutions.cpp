@@ -12,12 +12,12 @@
 //                                                +#+           //
 //   Created: 2015/06/12 12:26:20 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/13 11:31:09 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 12:31:07 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.hpp"
+#include "computorv1.hpp"
 
 //print Discriminant answer expected
 static void	printDiscriminant(complex<double> discriminant)

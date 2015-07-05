@@ -12,12 +12,12 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:12:13 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/13 10:51:34 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 12:29:51 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.hpp"
+#include "computorv1.hpp"
 
 // Constructs the empty linked list object.
 // Creates the head node and sets length to zero.
@@ -169,39 +169,6 @@ LinkedList& LinkedList::operator -= (const LinkedList& secondList)
 	return *this;
 }
 
-//  REMOVE	
-// Displays list contents to the console window.
-void LinkedList::printList()
-{
-	Coefficient * p;
-	Coefficient * q;
-
-	if (length == 0)
-	{
-		cout << "n{ }n";
-		cout << "\n";	
-		return;
-	}
-	p = head;
-	q = head;
-	cout << "n{ ";
-	while (q)
-	{
-		p = q;
-		if (p != head)
-		{
-			cout << p -> key;
-			cout << " - ";
-			cout << p -> value;
-			if (p -> next) cout << ", ";
-			else cout << " ";
-		}
-		q = p -> next;
-	}
-	cout << "}n";
-	cout << "\n";
-}
-
 
 //*****************************************************************
 // Printing Equation Formula Eqautions
@@ -277,6 +244,8 @@ const LinkedList& LinkedList::sort_List()
 	return *this;
 }
 
+//its only function is to present nicely the solution if degree is 0.
+//if not it ends the job started by the operator -=
 LinkedList&	LinkedList::endingJoiningLists(const LinkedList &secondList,
 										   const Usages& usage)
 {

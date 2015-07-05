@@ -12,12 +12,12 @@
 //                                                +#+           //
 //   Created: 2015/06/04 15:12:01 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/13 11:06:08 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 12:29:02 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.hpp"
+#include "computorv1.hpp"
 
 //overload operator to only add value, and not key
 const Coefficient& Coefficient::operator+= (const Coefficient& second_coef) {

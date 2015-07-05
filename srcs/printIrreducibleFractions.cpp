@@ -12,12 +12,12 @@
 //                                                +#+           //
 //   Created: 2015/06/12 17:09:33 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/13 11:19:25 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 12:30:40 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.hpp"
+#include "computorv1.hpp"
 
 /*
  * printIrreducibleFractions 

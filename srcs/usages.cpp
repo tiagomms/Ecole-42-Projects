@@ -12,12 +12,12 @@
 //                                                +#+           //
 //   Created: 2015/06/04 18:30:17 by tsilva            #+#
 //   #+#             //
-//   Updated: 2015/06/13 11:19:59 by tsilva           ###   ########.fr       //
+//   Updated: 2015/06/13 12:31:35 by tsilva           ###   ########.fr       //
 //   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "./includes/computorv1.hpp"
+#include "computorv1.hpp"
 
 bool	Usages::natural_display__n = 0; 
 
