@@ -7,8 +7,8 @@ Unity version 5 used.
 
 SumUp of your day-to-day focus.
 
-WEEK 1 - UNITY2D
-day00 - intro to unity2D
+WEEK 1 - UNITY2D\n
+day00 - intro to unity2D\n
 day01 - 2D physics, triggers, layers, scenes, getcomponent, load scenes
 day02 - audio & animations
 day03 - build, advanced inputs, GUI & UI setup
