@@ -7,21 +7,21 @@ Unity version 5 used.
 
 SumUp of your day-to-day focus.
 
-WEEK 1 - UNITY2D\n
-day00 - intro to unity2D\n
-day01 - 2D physics, triggers, layers, scenes, getcomponent, load scenes
-day02 - audio & animations
-day03 - build, advanced inputs, GUI & UI setup
-day04 - PlayerPref and CoRoutines
-rush00 - Hotline Miami makeover
+WEEK 1 - UNITY2D.
+day00 - intro to unity2D.
+day01 - 2D physics, triggers, layers, scenes, getcomponent, load scenes.
+day02 - audio & animations.
+day03 - build, advanced inputs, GUI & UI setup.
+day04 - PlayerPref and CoRoutines.
+rush00 - Hotline Miami makeover.
 
-WEEK 2 - UNITY3D
-d05 - Intro to Unity3D (basics) and camera movement
-d06 - audio, shaders and particles
-d07 - navmesh, gui3D, raycast and spherecast
-d08 - animation
-d09 - make a FPS to kill zombie hordes
-rush01 - Hack & Slash game
+WEEK 2 - UNITY3D.
+d05 - Intro to Unity3D (basics) and camera movement.
+d06 - audio, shaders and particles.
+d07 - navmesh, gui3D, raycast and spherecast.
+d08 - animation.
+d09 - make a FPS to kill zombie hordes.
+rush01 - Hack & Slash game.
 
 
 This was a very intensive piscine, with a lot of work and details to be fulfilled.
