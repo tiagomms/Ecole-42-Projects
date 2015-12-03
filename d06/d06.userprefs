@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GetKeyChain.cs">
+    <Files>
+      <File FileName="Assets/Scripts/movePlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LightDiscretion.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/fanWork.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerScript.cs" Line="23" Column="1" />
+      <File FileName="Assets/GetKeyChain.cs" Line="12" Column="21" />
+      <File FileName="Assets/switchUnit.cs" Line="19" Column="10" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
