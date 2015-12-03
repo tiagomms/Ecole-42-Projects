@@ -27,7 +27,7 @@ rush01 - Hack & Slash game.
 This was a very intensive piscine, with a lot of work and details to be fulfilled.
 So there is an obvious lack of comments in all my work, which is somehow normal considering the amount of pressure and learning we need to make in two weeks. 
 
-It isalso a Very big repository. So, this will take some time to load (expect 5GB of space approximately).
+It is also a Very big repository. So, this will take some time to load (expect 5GB of space approximately).
 You need to have Unity 5 and above installed in your computer (we used Personal Edition).
 
 Any question, let me know.
