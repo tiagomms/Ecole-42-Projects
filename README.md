@@ -1,5 +1,7 @@
 # fractol
 
+**Small executable with many fractals. Minilibx Required**
+
 To run fractol (only works with minilibx library installed):
 make Makefile (by doing make)
 
