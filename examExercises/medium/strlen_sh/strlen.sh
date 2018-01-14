@@ -1,0 +1,1 @@
+env | grep FT_LINE | cut -d '=' -f 2 | rev | cut -c 2- | rev | wc -c | sed s/' '/''/g
