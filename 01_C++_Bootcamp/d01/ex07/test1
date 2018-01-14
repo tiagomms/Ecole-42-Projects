@@ -1,0 +1,19 @@
+vogsphere: (INFO) Transaction ID : d4176da6-825d-4dcb-8827-4b770ece8ad3
+vogsphere: (INFO) Please mention this ID in any ticket you create concerning this transaction
+vogsphere: (INFO) This transaction has been started at 2015-06-16 21:31:05, server time.
+vogsphere: (INFO) Rights will be determined using this time, so do NOT cut the connection.
+vogsphere: (INFO) It appears you are tsilva. If that's not true, check your Kerberos tickets (klist)
+vogsphere: (INFO) You have read and write rights on this repository
+Counting objects: 10, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (10/10), 2.43 KiB | 0 bytes/s, done.
+Total 10 (delta 7), reused 0 (delta 0)
+vogsphere: (INFO) You have just successfully pushed 1 new revisions.
+vogsphere: (INFO) Here is a list of the NEW commits on the remote repository.
+vogsphere: (INFO) If anything has just been pushed successfully, it will be listed here.
+vogsphere: (INFO) ########## BEGIN REMOTE NEW COMMIT LIST ########
+vogsphere: (INFO) 14d681d - Tiago SILVA, Tue Jun 16 21:31:03 2015 +0200 : ex06
+vogsphere: (INFO) ########## END REMOTE NEW COMMIT LIST ##########
+To vogsphere@vogsphere.42.fr:intra/2015/activities/d01/tsilva2
+   219b09c..14d681d  master -> master
