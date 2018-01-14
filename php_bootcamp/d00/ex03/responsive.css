@@ -1,0 +1,30 @@
+td {
+      height: auto;
+    }
+    .element {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 118px;
+      width: 130px;
+      border: 1px solid black;
+    }
+    .elem_weight {
+      
+      margin: 4%;
+      text-align: right;
+      font-size: 1.2vmin;
+      margin-right: 5%;
+    }
+    .elem_symbol {
+      position: inherit;
+      text-align: center;
+      font-size: 3vmin;
+    }
+    .elem_number {
+      position: inherit;
+      margin-left: 5%;
+      text-align: left;
+      font-size: 1.2vmin;
+      bottom: 10%;
+    }

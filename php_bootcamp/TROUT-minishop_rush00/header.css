@@ -1,0 +1,55 @@
+#header {
+    font-size:20px;
+    max-width:1280px;
+    min-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    font-family:helvetica;
+}
+
+#header img {
+    height: 120px;
+    width:120px;
+    border-radius: 10px;
+}
+
+#header .circle_image {
+    border-radius: 120px;
+}
+
+#header #header_left {
+    margin-left: 0px;
+    font-size:20px;
+}
+
+#header #header_right {
+    font-size:20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: right;
+}
+
+#header #header_center {
+    margin: auto;
+    display: flex;
+}
+
+#header #header_center .middle_thingy {
+    margin: auto;
+    text-align: center;
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#header #username_logout {
+    font-size: 18px;
+    text-align: center;
+}
+
+#header .underneath_text {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+}

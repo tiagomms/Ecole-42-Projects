@@ -1,0 +1,12 @@
+<- Bear ----------------------------------------------------------------------
+The Bear belongs to a faction that is both very fast and has a strong attack.
+It hits the ground and all tiles nearby are damaged.
+
+When you construct it, you need to provide a position(x, y), a width,
+a height, the name of this instance of the object and the player
+to which it belongs.
+
+The fight function is linked to the explosion attack and requires a dice roll,
+width, height, position and the arena class.
+
+---------------------------------------------------------------------- Bear ->

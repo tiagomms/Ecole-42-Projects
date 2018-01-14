@@ -1,0 +1,15 @@
+<- Arena ----------------------------------------------------------------------
+The Arena represents the field in which the ships move.
+
+It has private width, height and onScreen attributes.
+It also has a public function addOnScrenn to add object and a getTileContents 
+method to check if position(x, y) is occupied by an object.
+
+It has a toString method.
+
+You can also get the width, get the height and get the onScreens with the 
+methods getWidth(), getHeight(), getOnScreens().
+
+Width and Height are set by default to 150 and 100.
+
+---------------------------------------------------------------------- Arena ->

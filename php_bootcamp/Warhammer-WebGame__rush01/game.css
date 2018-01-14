@@ -1,0 +1,178 @@
+body {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+#background {
+	background-image: url("./images/Background.png");
+	opacity: 0.4;
+    background-repeat: repeat;
+    position: absolute;
+    width:100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.subtitle {
+	padding: 0px 270px;
+	background-color: white;
+}
+
+.all {
+	width: 2800px;
+	min-width: 2800px;
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-flex;
+}
+
+p {
+	font-size: 12px;
+	text-align: center;
+}
+
+.all input {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#central_table {
+	width: 2000px;
+	margin: 0px;
+	text-align: center;
+}
+
+#rocks {
+	width: 2800px;
+	min-width: 2800px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 250px;
+	display: inline-flex;
+}
+
+.trout_data {
+	width: 220px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 1px solid black;
+	background-color: white;
+	align: center;
+}
+
+.centered_forms {
+	display: inline-block;
+	text-align: center;
+}
+
+.trout_data div{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.trout_data h4, h5{
+	text-align: center;
+}
+
+#central_table table{
+	border-collapse: collapse;
+	background: #a2b6ff;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#rock_info {
+	border: 1px solid black;
+	height: 220px;
+	width: 1900px;
+	margin-left:276px;
+	text-align: center;
+	display: inline-flex;
+	background-color: white;
+}
+
+#rock_info  #c1, #c2 {
+	width: 33%;
+}
+
+#rock_info  #c3 {
+	width: auto;
+}
+
+#rock_info #c1 div {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#rock_info #c2 div {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#rock_info #c3 div {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+tr {
+	
+	height: 10px;
+
+}
+
+td {
+	width: 10px;
+	height: 10px; /* I don't know why it's 10... */
+	border: 1px solid #fdfdfd;
+}
+
+td img {
+	position: relative;
+	width: 100%;
+	padding: 0px;
+	border: 0px;
+	margin: auto;
+}
+
+.SniperTrout {
+	background-image: url("./images/minisni.png");
+}
+
+.RedneckTrout1 {
+	background-image: url("./images/minisni.png");
+}
+
+.RedneckTrout2 {
+	background-image: url("./images/minisni.png");
+}
+
+.d {
+	background-image: url("./images/minigrizzlybearshenck.png");
+}
+
+.e {
+	background-image: url("./images/minigrizzlybearshenck.png");
+}
+
+.f {
+	background-image: url("./images/minigrizzlybearshenck.png");
+}
+
+.g {
+	background-image: url("./images/minirock.png");
+}
+
+.h {
+	background-image: url("./images/minirock.png");
+}
+
+.i {
+	background-image: url("./images/minirock.png");
+}
+
+.obstacle {
+	background-color: black;
+}

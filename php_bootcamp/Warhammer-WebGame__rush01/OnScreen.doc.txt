@@ -1,0 +1,14 @@
+<- OnScreen -------------------------------------------------------------------
+The OnScreen object is any object operating in the field; it has a position_x, 
+a position_y, a width and a height protected properties.
+
+When you construct it, you need to provide a position(x, y), as wel and a width
+and a height for your instance.
+
+The isOccupying function tells you wether the ship occupies position located at
+x and y.
+
+The public methods getPositionX, getPositionY, getHeight, getWidth give you the
+position (x, y) and the measures (height, width).
+
+---------------------------------------------------------------------- OnScreen ->

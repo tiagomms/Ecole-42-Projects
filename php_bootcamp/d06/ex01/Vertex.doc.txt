@@ -1,0 +1,26 @@
+<- Vertex ----------------------------------------------------------------------
+The representation of a point in space
+Five characteristics:
+• The x-coordinate
+• The y-coordinate
+• The depth z
+• A new and disturbing w-coordinate
+• A color represented as an instance of the class Color
+    • The color of the vertex will always be an instance of the class Color.
+
+• The Vertex class provides read/write functions for all five attributes.
+• '__toString' function allows use of Vertex as string.
+
+• The class constructor expects an array. Expected keys are the following:
+    'X':        the x-coordinate of the vertex            (mandatory)
+    'Y':        the y-coordinate of the vertex            (mandatory)
+    'Z':        the z-coordinate of the vertex            (mandatory)
+    'W':        default is 1.0                            (optional)
+    'Color':    default is a fresh instance of white    (optional)
+
+• Static boolean 'verbose' controls the displays associated with
+    the use of the class (default is FALSE).
+• Color of the vertex is added to the string if 'verbose' is TRUE.
+• If 'verbose' is true, then the builder and destructor of the class will produce an output.
+• 'doc' function returns the content of the documentation.
+---------------------------------------------------------------------- Vertex ->

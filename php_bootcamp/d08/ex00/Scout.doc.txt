@@ -1,0 +1,12 @@
+<- Scout ----------------------------------------------------------------------
+
+This represents a small ship. (Extends Ship, duh.)
+
+The constructor takes x, y, and a name (text);
+
+The fight function makes it fire. It takes a dice roll, width, area, positions
+, and directions, also an arena.
+
+It has a __toString method, duhh.
+
+---------------------------------------------------------------------- Scout ->

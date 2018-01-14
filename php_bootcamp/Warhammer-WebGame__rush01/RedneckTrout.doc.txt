@@ -1,0 +1,13 @@
+<- RedneckTrout ----------------------------------------------------------------------
+This represents a small redneck trout. (From down south)
+
+The constructor takes x, y, a name (text) and the player to which the object
+belongs.
+
+The fight function makes it fire, weapon of choice being a shotgun. This sprays
+bullets out in front of the object. It takes a dice roll, width, area, positions
+, and directions, also an arena.
+
+It has a __toString method, duhh.
+
+---------------------------------------------------------------------- RedneckTrout ->

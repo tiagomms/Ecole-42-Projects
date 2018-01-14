@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript</title>
+    </head>
+    <body>
+        <div>
+            <input id="left" type="text" />
+            <select id="operations">
+                <option>+</option>
+                <option>-</option>
+                <option>*</option>
+                <option>/</option>
+                <option>%</option>
+            </select>
+            <input id="right" type="text" />
+            <input id="button" type="submit" value="Try me!" />
+        </div>
+        <script>
+            var button = document.getElementById('button');
+            var left = document.getElementById('left');
+            var right = document.getElementById('right');
+            var operations = document.getElementById('operations');
+
+            function isNumber(nbr) {
+                return !isNaN(parseFloat(nbr)) && isFinite(nbr) && nbr >= 0;
+            }
+
+            button.onclick = function() {
+                var operator = operations.options[operations.selectedIndex].text; 
+                if (isNumber(left.value) && isNumber(right.value))
+                {
+                    if ((operator == '%' || operator == '/') && Number(right.value) == 0)
+                    {
+                        console.log("It's over 9000!");
+                        alert("It's over 9000!");
+                    }
+                    else
+                    {
+                        var res = eval("" + left.value + operator + right.value);
+                        console.log(res.toString());
+                        alert(res);
+                    }
+                }
+                else
+                {
+                    alert("Error :(");
+                }
+            }
+
+           var alert_timer = setInterval(function() {alert('Please, use me...')}, 30000);
+           </script>
+    </body>
+<html>

@@ -1,0 +1,8 @@
+<- KamikazeRock ----------------------------------------------------------------------
+The KamikazeRock is a faction that is only capable of moving and has no attack,
+other than blowing themselves up and taking others down with them.
+
+When you construct it, you need to provide a position(x, y), a width, a height,
+the name of this specific instance and the player who owns it.
+
+---------------------------------------------------------------------- KamikazeRock ->
