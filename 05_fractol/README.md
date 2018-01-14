@@ -3,13 +3,15 @@
 **Small executable with many fractals. Minilibx Required**
 
 To run fractol (only works with minilibx library installed):
-make Makefile (by doing make)
 
-After write:
+```
+make
+./fractol [Fractal name] [Number of iterations]
+```
 
-`./fractol [Fractal name] [Number of iterations]`
+It displays the picked fractal. A menu was written inside the window.
 
-Fractol name (all small cases):
+Fractal name (all small cases):
 - julia
 - mandelbrot
 - burning
@@ -20,6 +22,4 @@ Fractol name (all small cases):
 - other4
 - other5
 
-Number of iterations - 0 to infinity
-
-It displays the picked fractal. A menu was written inside the window.
+Number of iterations: 0 to infinity
